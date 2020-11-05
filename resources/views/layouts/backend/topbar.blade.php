@@ -63,7 +63,7 @@
                             <div class="d-flex wd-100p">
                                 <div class="main-img-user"><img alt="" src="{!! asset('backend') !!}/img/faces/6.jpg" class=""></div>
                                 <div class="ml-3 my-auto">
-                                    <h6>{{ Auth::user()->name }}</h6>
+                                    <h6>{{ Auth::user()->name ? Auth::user()->name : Auth::user()->restaurant_name  }}</h6>
                                 </div>
                             </div>
                         </div>
