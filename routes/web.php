@@ -22,6 +22,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //AdminController Routes
-Route::get('/admin/home',"Admin\DashboardController@index");
+Route::get('/admin/home',"Admin\DashboardController@index")->name('admin.dashboard');
 Route::get('/admin', 'AdminController@showLoginForm');
 Route::post('/admin', 'AdminController@login')->name('admin.login');
+
+Route::prefix('admin')->middleware(['auth:admin'])->group(base_path('routes/admin.php'));

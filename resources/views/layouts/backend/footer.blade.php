@@ -53,12 +53,83 @@
     <script src="{!! asset('backend') !!}/js/jquery.vmap.sampledata.js"></script>	
     <!-- Sticky js -->
     <script src="{!! asset('backend') !!}/js/sticky.js"></script>
+    <!-- Internal Data tables -->
+    <script src="{!! asset('backend') !!}/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="{!! asset('backend') !!}/plugins/datatable/js/dataTables.dataTables.min.js"></script>
+    <script src="{!! asset('backend') !!}/plugins/datatable/js/dataTables.responsive.min.js"></script>
+    <script src="{!! asset('backend') !!}/plugins/datatable/js/responsive.dataTables.min.js"></script>
+    <script src="{!! asset('backend') !!}/plugins/datatable/js/jquery.dataTables.js"></script>
+    <script src="{!! asset('backend') !!}/plugins/datatable/js/dataTables.bootstrap4.js"></script>
+    <script src="{!! asset('backend') !!}/plugins/datatable/js/dataTables.buttons.min.js"></script>
+    <script src="{!! asset('backend') !!}/plugins/datatable/js/buttons.bootstrap4.min.js"></script>
+    <script src="{!! asset('backend') !!}/plugins/datatable/js/jszip.min.js"></script>
+    <script src="{!! asset('backend') !!}/plugins/datatable/js/pdfmake.min.js"></script>
+    <script src="{!! asset('backend') !!}/plugins/datatable/js/vfs_fonts.js"></script>
+    <script src="{!! asset('backend') !!}/plugins/datatable/js/buttons.html5.min.js"></script>
+    <script src="{!! asset('backend') !!}/plugins/datatable/js/buttons.print.min.js"></script>
+    <script src="{!! asset('backend') !!}/plugins/datatable/js/buttons.colVis.min.js"></script>
+    <script src="{!! asset('backend') !!}/plugins/datatable/js/dataTables.responsive.min.js"></script>
+    <script src="{!! asset('backend') !!}/plugins/datatable/js/responsive.bootstrap4.min.js"></script>
+    <!--Internal  Datatable js -->
+    <script src="{!! asset('backend') !!}/js/table-data.js"></script>
+
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    
     <!-- custom js -->
     <script src="{!! asset('backend') !!}/js/custom.js"></script><!-- Left-menu js-->
     <script src="{!! asset('backend') !!}/plugins/side-menu/sidemenu.js"></script>
 
     <!-- Switcher js -->
-    <script src="{!! asset('backend') !!}/switcher/js/switcher.js"></script>	
+    <script src="{!! asset('backend') !!}/switcher/js/switcher.js"></script>
+
+    {{-- Sweetalert --}}
+    <script src="{{ asset('js/sweetalert.min.js') }}"></script>
+ 
+    <script type="text/javascript">
+        @if (session('message'))
+            var alert = "{{ session('type') }}";
+            var message = "{{ session('message') }}";
+            switch (alert) {
+            case "error":
+                toastr.error(message)
+                break;
+            case "warning":
+                toastr.warning(message)
+                break;
+            case "info":
+                toastr.info(message)
+                break;
+            default:
+                toastr.success(message)
+                break;
+            }
+        @endif
+
+        //Delete item
+        $(document).on("click","#delete",function(e){
+            e.preventDefault();
+            var link = $(this).attr("href");
+            swal({
+                title: "Are you Want to Delete?",
+                text: "Once Delete, This will be permanently Delete!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete)=> {
+                if(willDelete) {
+                window.location.href = link;
+                event.preventDefault();
+                }
+                else{
+                swal("Cancelled", "Your Data Is Safe :)", "error");
+                }
+            });
+            });
+    </script>
+
+
+
 </body>
 
 <!-- Mirrored from laravel.spruko.com/valex/leftmenu-light-ltr/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Oct 2020 08:54:58 GMT -->

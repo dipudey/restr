@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('restaurant_name');
             $table->string('email')->unique();
             $table->string('address');
+            $table->string('phone');
             $table->integer('branch_number')->nullable();
             $table->string('owner_name');
             $table->string('website_link')->nullable();

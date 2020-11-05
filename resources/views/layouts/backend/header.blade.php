@@ -20,6 +20,17 @@
         <link href="{!! asset('backend') !!}/css/icons.css" rel="stylesheet">
         <!--  Custom Scroll bar-->
         <link href="{!! asset('backend') !!}/plugins/mscrollbar/jquery.mCustomScrollbar.css" rel="stylesheet"/>
+        <!-- Internal Data table css -->
+        <link href="{!! asset('backend') !!}/plugins/datatable/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+        <link href="{!! asset('backend') !!}/plugins/datatable/css/buttons.bootstrap4.min.css" rel="stylesheet">
+        <link href="{!! asset('backend') !!}/plugins/datatable/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+        <link href="{!! asset('backend') !!}/plugins/datatable/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="{!! asset('backend') !!}/plugins/datatable/css/responsive.dataTables.min.css" rel="stylesheet">
+        <link href="{!! asset('backend') !!}/plugins/select2/css/select2.min.css" rel="stylesheet">
+        
+        <!-- C3 charts css -->
+        
+        
         <!--  Right-sidemenu css -->
         <link href="{!! asset('backend') !!}/plugins/sidebar/sidebar.css" rel="stylesheet">
         <!-- Sidemenu css -->
@@ -36,6 +47,7 @@
         <!---Skinmodes css-->
         <link href="{!! asset('backend') !!}/css/skin-modes.css" rel="stylesheet" />
 
+        <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet" type="text/css"  />
         <!---Switcher css-->
         <link href="{!! asset('backend') !!}/switcher/css/switcher.css" rel="stylesheet">
         <link href="{!! asset('backend') !!}/switcher/demo.css" rel="stylesheet">	
