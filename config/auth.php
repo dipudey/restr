@@ -51,6 +51,16 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
+
+        'waiter' => [
+            'driver' => 'session',
+            'provider' => 'waiters',
+        ],
+
+        'chef' => [
+            'driver' => 'session',
+            'provider' => 'chefs',
+        ],
     ],
 
     /*
@@ -79,6 +89,16 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
+        ],
+
+        'waiters' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Waiter::class,
+        ],
+
+        'chefs' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Chef::class,
         ],
 
         // 'users' => [
@@ -111,6 +131,18 @@ return [
         ],
         'admins' => [
             'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'waiters' => [
+            'provider' => 'waiters',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'chefs' => [
+            'provider' => 'chefs',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

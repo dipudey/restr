@@ -8,10 +8,10 @@
         <div class="card">
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
-                    <h4 class="card-title mg-b-0">All Restarunt List</h4>
+                    <h4 class="card-title mg-b-0">All Food Category List</h4>
                     <i class="mdi text-gray">
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Add New Table    
+                            Add New Food Category    
                         </button>
                     </i>
                 </div>

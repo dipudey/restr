@@ -42,4 +42,6 @@ Route::group(['middleware' => ['auth'],'prefix' => 'restarunt'],function() {
     Route::post('/food-category/update',"Restarunt\FoodCategoryController@update")->name('food.category.update');
     Route::get('/food-category/destroy/{id}',"Restarunt\FoodCategoryController@destroy")->name('food.category.destroy');
 
+    Route::get('food',"Restarunt\FoodController@index")->name('food');
+    Route::post('food/store',"Restarunt\FoodController@store")->name('food.store');
 });
