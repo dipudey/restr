@@ -36,5 +36,10 @@ Route::group(['middleware' => ['auth'],'prefix' => 'restarunt'],function() {
     Route::post('/table/update','Restarunt\TableController@update')->name('table.update');
     Route::get('/table/destroy/{id}',"Restarunt\TableController@destroy")->name('table.destroy');
 
-    
+    Route::get('/food-category',"Restarunt\FoodCategoryController@index")->name('food.category');
+    Route::post('/food-category/store',"Restarunt\FoodCategoryController@store")->name('food.category.store');
+    Route::get('/food-category/edit/{id}',"Restarunt\FoodCategoryController@edit")->name('food.category.edit');
+    Route::post('/food-category/update',"Restarunt\FoodCategoryController@update")->name('food.category.update');
+    Route::get('/food-category/destroy/{id}',"Restarunt\FoodCategoryController@destroy")->name('food.category.destroy');
+
 });
