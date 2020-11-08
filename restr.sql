@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 07, 2020 at 02:55 PM
+-- Generation Time: Nov 08, 2020 at 03:27 PM
 -- Server version: 8.0.21-0ubuntu0.20.04.4
 -- PHP Version: 7.4.3
 
@@ -95,11 +95,19 @@ CREATE TABLE `food` (
   `food_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `discount` int DEFAULT NULL,
+  `discount_price` double(8,2) DEFAULT NULL,
   `picture` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `food`
+--
+
+INSERT INTO `food` (`id`, `food_category_id`, `user_id`, `food_name`, `price`, `discount`, `discount_price`, `picture`, `status`, `created_at`, `updated_at`) VALUES
+(1, 2, 1, 'Chicken Gril', '150', NULL, NULL, '5fa7fc647c754.jpg', 1, '2020-11-08 07:40:13', '2020-11-08 08:10:44');
 
 -- --------------------------------------------------------
 
@@ -146,9 +154,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2020_11_05_042105_create_admins_table', 1),
 (5, '2020_11_07_042528_create_tables_table', 2),
 (6, '2020_11_07_055216_create_food_categories_table', 3),
-(8, '2020_11_07_080733_create_food_table', 4),
 (9, '2020_11_07_140027_create_waiters_table', 5),
-(10, '2020_11_07_140601_create_chefs_table', 6);
+(10, '2020_11_07_140601_create_chefs_table', 6),
+(11, '2020_11_07_080733_create_food_table', 7);
 
 -- --------------------------------------------------------
 
@@ -331,7 +339,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `chefs`
 --
 ALTER TABLE `chefs`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -343,7 +351,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `food_categories`
@@ -355,7 +363,7 @@ ALTER TABLE `food_categories`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tables`
@@ -373,7 +381,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `waiters`
 --
 ALTER TABLE `waiters`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
