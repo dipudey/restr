@@ -52,4 +52,18 @@ Route::group(['middleware' => ['auth'],'prefix' => 'restarunt'],function() {
     //ChefController Routes 
     Route::get('/chef','Restarunt\ChefController@index')->name('chef');
     Route::get('/chef/create','Restarunt\ChefController@create')->name('chef.create');
+    Route::post('/chef/store','Restarunt\ChefController@store')->name('chef.store');
+    Route::post('/chef/update','Restarunt\ChefController@update')->name('chef.update');
+    Route::get('/chef/{id}/edit','Restarunt\ChefController@edit')->name('chef.edit');
+    Route::get('/chef/{id}/destroy','Restarunt\ChefController@destroy')->name('chef.destroy');
+
+
+    //WaiterController Routes 
+    Route::get('/waiter','Restarunt\WaiterController@index')->name('waiter');
+    Route::get('/waiter/create','Restarunt\WaiterController@create')->name('waiter.create');
+    Route::post('/waiter/store','Restarunt\WaiterController@store')->name('waiter.store');
+    Route::post('/waiter/update','Restarunt\WaiterController@update')->name('waiter.update');
+    Route::get('/waiter/{id}/edit','Restarunt\WaiterController@edit')->name('waiter.edit');
+    Route::get('/waiter/{id}/destroy','Restarunt\WaiterController@destroy')->name('waiter.destroy');
+
 });
