@@ -43,7 +43,11 @@ Route::group(['middleware' => ['auth'],'prefix' => 'restarunt'],function() {
     Route::get('/food-category/destroy/{id}',"Restarunt\FoodCategoryController@destroy")->name('food.category.destroy');
 
     Route::get('/food',"Restarunt\FoodController@index")->name('food');
+    Route::get('/food/create',"Restarunt\FoodController@create")->name('food.create');
     Route::post('/food/store',"Restarunt\FoodController@store")->name('food.store');
+    Route::get('/food/{id}/edit',"Restarunt\FoodController@edit")->name('food.edit');
+    Route::post('/food/update',"Restarunt\FoodController@update")->name('food.update');
+    Route::get('/food/{id}/destroy',"Restarunt\FoodController@destroy")->name('food.destroy');
 
     //ChefController Routes 
     Route::get('/chef','Restarunt\ChefController@index')->name('chef');

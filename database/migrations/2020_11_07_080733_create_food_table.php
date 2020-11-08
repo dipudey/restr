@@ -20,6 +20,7 @@ class CreateFoodTable extends Migration
             $table->string('food_name');
             $table->string('price');
             $table->integer('discount')->nullable();
+            $table->float('discount_price')->nullable();
             $table->string('picture')->nullable();
             $table->boolean('status')->default(0);
             $table->foreign('food_category_id')->references('id')->on('food_categories')->onDelete('cascade');
