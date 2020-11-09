@@ -1,30 +1,35 @@
 <?php
 
-namespace App\Http\Controllers\Restarunt;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Resources\FoodCollection;
 use App\Models\Food;
-use App\Models\FoodCategory;
+use Illuminate\Http\Request;
 use Carbon\Carbon;
-use Auth;
 use Image;
 
 class FoodController extends Controller
 {
-    public function index() {
-        return view('restarunt.food.index',[
-            'foods' => Food::where('user_id',Auth::id())->orderBy('id','desc')->get(),
-        ]);
-    }
-        
-    public function create() {
-        return view('restarunt.food.create',[    
-            'categories' => FoodCategory::where('user_id',Auth::id())->get(),
-        ]);
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index($user_id)
+    {
+        return Foodcollection::collection(Food::where('user_id',$user_id)->get());
     }
 
-    public function store(Request $request) {
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
         if($request->discount) {
             $discount_price = $request->price - (($request->discount * $request->price)/100);
         }
@@ -32,9 +37,9 @@ class FoodController extends Controller
             $discount_price = null;
         }
 
-        Food::insert([
+        $food = Food::insert([
             'food_category_id' => $request->food_category_id,
-            'user_id' => Auth::id(),
+            'user_id' => $request->user_id,
             'food_name' => $request->food_name,
             'price' => $request->price,
             'discount' => $request->discount,
@@ -43,18 +48,26 @@ class FoodController extends Controller
             'status' => $request->status,
             'created_at' => Carbon::now()
         ]);
-        return redirect()->route('food')->with('message',"New Food Added Successfully");
+
+        if($food) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
-    public function edit($id) {
-        return view('restarunt.food.edit',[    
-            'categories' => FoodCategory::where('user_id',Auth::id())->get(),
-            'food' => Food::find($id)
-        ]);
-    }
 
-    public function update(Request $request) {
-        $food = Food::find($request->id);
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Food  $food
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $food = Food::find($id);
         if($request->file('picture')) {
             $delete_location = base_path('public/uploads/'.$food->picture);
             unlink($delete_location);
@@ -70,7 +83,7 @@ class FoodController extends Controller
             $discount_price = null;
         }
 
-        $food->update([
+        $success = $food->update([
             'food_category_id' => $request->food_category_id,
             'food_name' => $request->food_name,
             'price' => $request->price,
@@ -78,15 +91,32 @@ class FoodController extends Controller
             'discount_price' => $discount_price,
             'status' => $request->status,
         ]);
-        return redirect()->route('food')->with('message',"Food Updated Successfully");
+
+        if($success) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Food  $food
+     * @return \Illuminate\Http\Response
+     */
     public function destroy($id) {
         $food = Food::find($id);
         $delete_location = base_path('public/uploads/'.$food->picture);
         unlink($delete_location);
-        $food->delete();
-        return back()->with('message','Food Deleted Successfully');
+        $success = $food->delete();
+        if($success) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     private function imageUpload($file) {

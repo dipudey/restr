@@ -5,14 +5,16 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\RestaurantRequest;
+use App\Http\Resources\RestaruntRegisterResource;
 use App\User;
 use Carbon\Carbon;
 use Hash;
+use Symfony\Component\HttpFoundation\Response;
 
 class RestaurantController extends Controller
 {
     public function store(RestaurantRequest $request) {
-        $user_id = User::create([
+        $user_id = User::insertGetId([
             "restaurant_name" => $request->restaurant_name,
             "email" => $request->email,
             "address" => $request->address,
@@ -31,6 +33,21 @@ class RestaurantController extends Controller
             'created_at' => Carbon::now()
         ]);
 
-        return $user_id;
+        return response(new RestaruntRegisterResource(User::find($user_id)),Response::HTTP_CREATED);
+    }
+
+    public function login(Request $request) {
+
+        $validData = User::where('phone',$request->phone)->first();
+        $password_check = password_verify($request->password,@$validData->password);
+        if($password_check == false) {
+            return response([
+                'errors' => "Phone Number & Password Does Not Match"
+            ],Response::HTTP_UNAUTHORIZED);
+        }
+        else{
+            return response(new RestaruntRegisterResource($validData),Response::HTTP_OK);
+        }
+        
     }
 }
