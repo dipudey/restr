@@ -37,3 +37,16 @@ Route::get('/food/{user_id}',"Api\FoodController@index");
 Route::post('/food/store',"Api\FoodController@store");
 Route::post('/food/update/{food_id}',"Api\FoodController@update");
 Route::post('/food/destroy/{food_id}',"Api\FoodController@destroy");
+Route::get('/category/wise/food/{user_id}',"Api\FoodController@categoryWiseFood");
+
+// ChefController Routes 
+Route::get('/chef/{user_id}',"Api\ChefController@index");
+Route::post('/chef/store',"Api\ChefController@store");
+Route::post('/chef/update/{id}',"Api\ChefController@update");
+Route::post('/chef/destroy/{id}',"Api\ChefController@destroy");
+
+// WaiterController Routes 
+Route::get('/waiter/{user_id}',"Api\WaiterController@index");
+Route::post('/waiter/store',"Api\WaiterController@store");
+Route::post('/waiter/update/{id}',"Api\WaiterController@update");
+Route::post('/waiter/destroy/{id}',"Api\WaiterController@destroy");

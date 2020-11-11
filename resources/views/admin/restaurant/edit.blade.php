@@ -54,30 +54,6 @@
                             @enderror
                         </div>
                         <div class="col-md-4">
-                            <label for="branch_number"> Branch Number </label>
-                            <input type="number" value="{{ $restaurant->branch_number }}" id="branch_number" class="form-control" name="branch_number">
-                            @error('branch_number')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-4">
-                            <label for="website_link"> Website Link </label>
-                            <input type="text" value="{{ $restaurant->website_link }}" id="website_link" class="form-control" name="website_link">
-                            @error('website_link')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="col-md-4">
-                            <label for="facebook_page"> Facebook Page</label>
-                            <input type="text" value="{{ $restaurant->facebook_page }}" id="facebook_page" class="form-control" name="facebook_page">
-                            @error('facebook_page')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="col-md-4">
                             <label for="country"> Country Name <span class="text-danger">*</span></label>
                             <input type="text" value="{{ $restaurant->country }}" id="country" class="form-control" name="country" required>
                             @error('country')
@@ -102,19 +78,20 @@
                             @enderror
                         </div>
                         <div class="col-md-4">
-                            <label for="employee_number"> Employee Nmuber <span class="text-danger">*</span></label>
-                            <input type="number" value="{{ $restaurant->employee_number }}" id="employee_number" class="form-control" name="employee_number" required>
-                            @error('employee_number')
+                            <label for="website_link"> Website Link </label>
+                            <input type="text" value="{{ $restaurant->website_link }}" id="website_link" class="form-control" name="website_link">
+                            @error('website_link')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
+                        
                     </div>
 
                     <div class="form-group row">
                         <div class="col-md-6">
-                            <label for="waiter_number"> Waiter Name <span class="text-danger">*</span></label>
-                            <input type="number" value="{{ $restaurant->waiter_number }}" id="waiter_number" class="form-control" name="waiter_number" required>
-                            @error('waiter_number')
+                            <label for="facebook_page"> Facebook Page</label>
+                            <input type="text" value="{{ $restaurant->facebook_page }}" id="facebook_page" class="form-control" name="facebook_page">
+                            @error('facebook_page')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
@@ -126,6 +103,7 @@
                             @enderror
                         </div>
                     </div>
+
 
                     <div class="text-center">
                         <button class="btn btn-info mt-3" type="submit">Update</button>

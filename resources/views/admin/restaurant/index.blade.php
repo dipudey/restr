@@ -22,8 +22,8 @@
                                 <th class="wd-15p border-bottom-0">Address</th>
                                 <th class="wd-20p border-bottom-0">Owner Name</th>
                                 <th class="wd-15p border-bottom-0">Country</th>
-                                <th class="wd-10p border-bottom-0">Total Employee</th>
                                 <th class="wd-25p border-bottom-0">E-mail</th>
+                                <th class="wd-25p border-bottom-0">Expaier Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -35,8 +35,8 @@
                                     <td>{{ $restaurant->address }}</td>
                                     <td>{{ $restaurant->owner_name }}</td>
                                     <td>{{ $restaurant->country }}</td>
-                                    <td>{{ $restaurant->employee_number }}</td>
                                     <td>{{ $restaurant->email }}</td>
+                                    <td>{{ date('d-M-Y',strtotime($restaurant->expaier_date)) }}</td>
                                     <td>
                                         <div class="btn-group">
                                             <a href="" class="btn btn-sm btn-primary"><i class="far fa-eye"></i></a>

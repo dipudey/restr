@@ -36,6 +36,14 @@ Route::group(['middleware' => ['auth'],'prefix' => 'restarunt'],function() {
     Route::post('/table/update','Restarunt\TableController@update')->name('table.update');
     Route::get('/table/destroy/{id}',"Restarunt\TableController@destroy")->name('table.destroy');
 
+    // BranchController 
+    Route::get('/branch',"Restarunt\BranchController@index")->name('branch');
+    Route::get('/branch/create',"Restarunt\FoodController@create")->name('branch.create');
+    Route::post('/branch/store','Restarunt\BranchController@store')->name('branch.store');
+    Route::get('/branch/edit/{id}',"Restarunt\BranchController@edit")->name('branch.edit');
+    Route::post('/branch/update','Restarunt\BranchController@update')->name('branch.update');
+    Route::get('/branch/destroy/{id}',"Restarunt\BranchController@destroy")->name('branch.destroy');
+
     Route::get('/food-category',"Restarunt\FoodCategoryController@index")->name('food.category');
     Route::post('/food-category/store',"Restarunt\FoodCategoryController@store")->name('food.category.store');
     Route::get('/food-category/edit/{id}',"Restarunt\FoodCategoryController@edit")->name('food.category.edit');

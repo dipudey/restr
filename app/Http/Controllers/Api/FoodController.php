@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FoodCollection;
+use App\Http\Resources\FoodCategoryCollection;
+use App\Http\Resources\CategoryWishFoodCollection;
 use App\Models\Food;
+use App\Models\FoodCategory;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Image;
@@ -117,6 +120,10 @@ class FoodController extends Controller
         else{
             return false;
         }
+    }
+
+    public function categoryWiseFood($user_id) {
+        return CategoryWishFoodCollection::collection(FoodCategory::where('user_id',$user_id)->get());
     }
 
     private function imageUpload($file) {

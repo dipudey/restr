@@ -13,7 +13,7 @@
             <div class="card-body pt-0 mt-4">
                 <form class="" action="{{ route('restaurant.registration') }}" method="post">
                     @csrf
-
+                    <input type="hidden" name="package_id" value="{{ $_GET['package'] }}">
                     <div class="form-group row">
                         <div class="col-md-4">
                             <label for="restaurant_name">Restaurant Name <span class="text-danger">*</span></label>
@@ -54,30 +54,6 @@
                             @enderror
                         </div>
                         <div class="col-md-4">
-                            <label for="branch_number"> Branch Number </label>
-                            <input type="number" id="branch_number" class="form-control" name="branch_number">
-                            @error('branch_number')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-4">
-                            <label for="website_link"> Website Link </label>
-                            <input type="text" id="website_link" class="form-control" name="website_link">
-                            @error('website_link')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="col-md-4">
-                            <label for="facebook_page"> Facebook Page</label>
-                            <input type="text" id="facebook_page" class="form-control" name="facebook_page">
-                            @error('facebook_page')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
-                        </div>
-                        <div class="col-md-4">
                             <label for="country"> Country Name <span class="text-danger">*</span></label>
                             <input type="text" id="country" class="form-control" name="country" required>
                             @error('country')
@@ -102,9 +78,9 @@
                             @enderror
                         </div>
                         <div class="col-md-4">
-                            <label for="employee_number"> Employee Nmuber <span class="text-danger">*</span></label>
-                            <input type="number" id="employee_number" class="form-control" name="employee_number" required>
-                            @error('employee_number')
+                            <label for="website_link"> Website Link </label>
+                            <input type="text" id="website_link" class="form-control" name="website_link">
+                            @error('website_link')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
@@ -112,9 +88,9 @@
 
                     <div class="form-group row">
                         <div class="col-md-4">
-                            <label for="waiter_number"> Waiter Name <span class="text-danger">*</span></label>
-                            <input type="number" id="waiter_number" class="form-control" name="waiter_number" required>
-                            @error('waiter_number')
+                            <label for="facebook_page"> Facebook Page</label>
+                            <input type="text" id="facebook_page" class="form-control" name="facebook_page">
+                            @error('facebook_page')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>
@@ -133,6 +109,25 @@
                             @enderror
                         </div>
                     </div>
+
+                    @if ($_GET['package'] != 1)
+                        <div class="form-group">
+                            <label for="">Expaier Moth</label>
+                            <select name="expaire_month" id="" class="form-control">
+                                <option value="1">1 Month</option>
+                                <option value="2">2 Month</option>
+                                <option value="3">3 Month</option>
+                            </select>
+                        </div>
+                    @else 
+                        <div class="form-group" style="display: none">
+                            <label for="">Expaier Moth</label>
+                            <select name="expaire_month" id="" class="form-control">
+                                <option value="1">1 Month</option>
+                            </select>
+                        </div>
+                    @endif
+
 
                     <div class="text-center">
                         <button class="btn btn-primary mt-3" type="submit">Save</button>

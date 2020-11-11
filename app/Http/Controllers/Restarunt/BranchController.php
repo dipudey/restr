@@ -4,27 +4,21 @@ namespace App\Http\Controllers\Restarunt;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Waiter;
-use Auth;
-use Hash;
-use Carbon\Carbon;
 
-class WaiterController extends Controller
+class BranchController extends Controller
 {
     public function index() {
-        return view('restarunt.waiter.index',[
-            'waiters' => Waiter::where('user_id',Auth::id())->orderBy('id','desc')->get(),
+        return view('restarunt.branch.index',[
+            'chefs' => Chef::where('user_id',Auth::id())->orderBy('id','desc')->get(),
         ]);
     }
 
     public function create() {
-        return view('restarunt.waiter.create');
+        return view('restarunt.branch.create');
     }
 
     public function store(Request $request) {
-
-        dd($request->all());
-        Waiter::insert([
+        Chef::insert([
             'user_id' => Auth::id(),
             'name' => $request->name,
             'phone' => $request->phone,
@@ -33,27 +27,27 @@ class WaiterController extends Controller
             'password' => Hash::make($request->password),
             'created_at' => Carbon::now()
         ]);
-        return redirect()->route('waiter')->with('message',"New Waiter Added Successfully");
+        return redirect()->route('branch')->with('message',"New Chef Added Successfully");
     }
 
     public function edit($id) {
-        return view('restarunt.waiter.edit',[
-            'waiter' => Waiter::find($id)
+        return view('restarunt.branch.edit',[
+            'chef' => Chef::find($id)
         ]);
     }
 
     public function update(Request $request) {
-        Waiter::find($request->id)->update([
+        Chef::find($request->id)->update([
             'name' => $request->name,
             'phone' => $request->phone,
             'address' => $request->address,
             'email' => $request->email,
         ]);
-        return redirect()->route('waiter')->with('message',"Waiter Information Updated");
+        return redirect()->route('branch')->with('message'," Chef Information Updated");
     }
 
     public function destroy($id) {
-        Waiter::find($id)->delete();
-        return back()->with('message',"Waiter Deleted");
+        Chef::find($id)->delete();
+        return back()->with('message',"Chef Deleted");
     }
 }
