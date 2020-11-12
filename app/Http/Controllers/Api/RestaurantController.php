@@ -14,23 +14,24 @@ use Symfony\Component\HttpFoundation\Response;
 class RestaurantController extends Controller
 {
     public function store(RestaurantRequest $request) {
+        $today_date = date('Y-m-d');
+        $expaire_date = strtotime ( '+'.$request->expaire_month.' month' , strtotime ( $today_date ) );
+        
         $user_id = User::insertGetId([
-            "restaurant_name" => $request->restaurant_name,
-            "email" => $request->email,
-            "address" => $request->address,
-            "phone" => $request->phone,
-            "branch_number" => $request->branch_number,
-            "owner_name" => $request->owner_name,
-            "website_link" => $request->website_link,
-            "facebook_page" => $request->facebook_page,
-            "city" => $request->city,
-            "zip" => $request->zip,
-            "country" => $request->country,
-            "employee_number" => $request->employee_number,
-            "waiter_number" => $request->waiter_number,
-            "user_name" => $request->user_name,
-            "password" => Hash::make($request->password),
-            'created_at' => Carbon::now()
+            'restaurant_name' => $request->restaurant_name,
+            'email' => $request->email,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'owner_name' => $request->owner_name,
+            'website_link' => $request->website_link,
+            'facebook_page' => $request->facebook_page,
+            'city' => $request->city,
+            'zip' => $request->zip,
+            'country' => $request->country,
+            'user_name' => $request->user_name,
+            'expaier_date' => date('Y-m-d',$expaire_date),
+            'package_id' => $request->package_id,
+            'password' => Hash::make($request->password),
         ]);
 
         return response(new RestaruntRegisterResource(User::find($user_id)),Response::HTTP_CREATED);

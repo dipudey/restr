@@ -33,6 +33,7 @@ class WaiterController extends Controller
     {
         $waiter = Waiter::create([
             'user_id' => $request->user_id,
+            'branch_id' => $request->branch_id,
             'name' => $request->name,
             'phone' => $request->phone,
             'address' => $request->address,
@@ -57,6 +58,7 @@ class WaiterController extends Controller
     public function update(Request $request, $id)
     {
         $waiter = Waiter::findOrFail($id)->update([
+            'branch_id' => $request->branch_id,
             'name' => $request->name,
             'phone' => $request->phone,
             'address' => $request->address,

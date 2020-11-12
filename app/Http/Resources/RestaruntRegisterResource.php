@@ -20,17 +20,16 @@ class RestaruntRegisterResource extends JsonResource
             'email' => $this->email,
             'address' => $this->address,
             'phone' => $this->phone,
-            'branch_number' => $this->branch_number,
             'owner_name' => $this->owner_name,
             'website_link' => $this->website_link,
             'facebook_page' => $this->facebook_page,
             'city' => $this->city,
             'zip' => $this->zip,
             'country' => $this->country,
-            'employee_number' => $this->employee_number,
-            'waiter_number' => $this->waiter_number,
             'user_name' => $this->user_name,
             'user_category' => $this->user_category,
+            'package_id' => $this->package_id, 
+            'expaier_date' => $this->expaier_date, 
         ];
     }
 }
