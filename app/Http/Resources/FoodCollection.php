@@ -18,10 +18,10 @@ class FoodCollection extends JsonResource
             'id' => $this->id,
             'food_category' => $this->category->category_name,
             'price' => $this->price,
-            'discount' => $this->discount,
+            'discount_percentage' => $this->discount_percentage,
+            'discount_amount' => $this->discount_amount,
             'discount_price' => $this->discount_price,
-            'picture' => "/uploads/".$this->picture,
-            'status' => $this->status == 1 ? "Available" : "Unavailable"
+            'picture' => "/uploads/".$this->picture
         ];
     }
 }

@@ -19,7 +19,7 @@ class FoodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($user_id)
+    public function index($user_id) 
     {
         return Foodcollection::collection(Food::where('user_id',$user_id)->get());
     }
@@ -32,12 +32,20 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'food_category_id' => 'required',
+            'food_name' => 'required',
+            'price' => 'required',
+            'picture' => 'required|mimes:jpg,jpeg,png',
+        ],[
+            'food_category_id.required' => "Food Category Field Is Required"
+        ]);
 
-        if($request->discount) {
+        if($request->discount_type == 1) {
             $discount_price = $request->price - (($request->discount * $request->price)/100);
         }
-        else {
-            $discount_price = null;
+        else{
+            $discount_price = $request->price - $request->discount;
         }
 
         $food = Food::insert([
@@ -45,10 +53,10 @@ class FoodController extends Controller
             'user_id' => $request->user_id,
             'food_name' => $request->food_name,
             'price' => $request->price,
-            'discount' => $request->discount,
+            'discount_percentage' => $request->discount_type == 1?$request->discount:Null,
+            'discount_amount' => $request->discount_type == 2?$request->discount:Null,
             'discount_price' => $discount_price,
             'picture' => $this->imageUpload($request->file('picture')),
-            'status' => $request->status,
             'created_at' => Carbon::now()
         ]);
 
@@ -79,20 +87,20 @@ class FoodController extends Controller
             ]);
         }
 
-        if($request->discount) {
+        if($request->discount_type == 1) {
             $discount_price = $request->price - (($request->discount * $request->price)/100);
         }
-        else {
-            $discount_price = null;
+        else{
+            $discount_price = $request->price - $request->discount;
         }
 
         $success = $food->update([
             'food_category_id' => $request->food_category_id,
             'food_name' => $request->food_name,
             'price' => $request->price,
-            'discount' => $request->discount,
-            'discount_price' => $discount_price,
-            'status' => $request->status,
+            'discount_percentage' => $request->discount_type == 1?$request->discount:Null,
+            'discount_amount' => $request->discount_type == 2?$request->discount:Null,
+            'discount_price' => $discount_price
         ]);
 
         if($success) {
