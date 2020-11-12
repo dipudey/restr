@@ -19,10 +19,10 @@ class CreateFoodTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('food_name');
             $table->string('price');
-            $table->integer('discount')->nullable();
+            $table->string('discount_percentage')->nullable();
+            $table->string('discount_amount')->nullable();
             $table->float('discount_price')->nullable();
             $table->string('picture')->nullable();
-            $table->boolean('status')->default(0);
             $table->foreign('food_category_id')->references('id')->on('food_categories')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');            
             $table->timestamps();

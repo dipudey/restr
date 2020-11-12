@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChefsTable extends Migration
+class CreateBranchesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,19 @@ class CreateChefsTable extends Migration
      */
     public function up()
     {
-        Schema::create('chefs', function (Blueprint $table) {
+        Schema::create('branches', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');  
-            $table->unsignedBigInteger('branch_id');  
             $table->string('name');
             $table->string('phone');
             $table->string('address');
             $table->string('email')->unique();
-            $table->string('user_category')->default('chef');
+            $table->string('user_category')->default('branch');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
         });
     }
 
@@ -38,6 +36,6 @@ class CreateChefsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chefs');
+        Schema::dropIfExists('branches');
     }
 }

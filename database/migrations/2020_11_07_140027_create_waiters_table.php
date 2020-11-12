@@ -16,6 +16,7 @@ class CreateWaitersTable extends Migration
         Schema::create('waiters', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');  
+            $table->unsignedBigInteger('branch_id');  
             $table->string('name');
             $table->string('phone');
             $table->string('address');
@@ -26,6 +27,7 @@ class CreateWaitersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
         });
     }
 

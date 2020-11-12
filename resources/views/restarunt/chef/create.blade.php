@@ -31,6 +31,15 @@
                         <input type="text" name="address" class="form-control" >
                     </div>
                     <div class="form-group">
+                        <label for="">Branch <span class="text-danger">*</span></label>
+                        <select name="branch_id" id="" class="form-control" required>
+                            <option value="">select</option>
+                            @foreach ($branches as $branch)
+                                <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="">Password <span class="text-danger">*</span></label>
                         <input type="password" name="password" class="form-control" >
                     </div>

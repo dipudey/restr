@@ -31,17 +31,21 @@
                         <label for="">Price<span class="text-danger">*</span></label>
                         <input type="number" name="price" class="form-control" required>
                     </div>
+
+                    <div class="form-group">
+                        <label for="">Discoutn Type</label>
+                        <select name="discount_type" id="" class="form-control">
+                            <option value="1">Discount Percentage</option>
+                            <option value="2">Discount Amount</option>
+                        </select>
+                    </div>
+
                     <div class="form-group">
                         <label for="">Discount</label>
                         <input type="number" name="discount" class="form-control" >
                     </div>
-                    <div class="form-group">
-                        <label for="">Food Status <span class="text-danger">*</span></label>
-                        <select name="status" class="form-control" required>
-                            <option value="1">Available</option>
-                            <option value="0">Unavailable</option>
-                        </select>
-                    </div>
+
+                    
                     <div class="form-group">
                         <label for="">Picture <span class="text-danger">*</span></label>
                         <input type="file" name="picture" class="form-control" required>

@@ -1,4 +1,4 @@
-@extends('layouts.restaurant_master')
+@extends('layouts.branch_master')
 
 @section('content')
 <div class="breadcrumb-header justify-content-between"></div>

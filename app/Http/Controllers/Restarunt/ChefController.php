@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Restarunt;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Chef;
+use App\Models\Branch;
 use Auth;
 use Hash;
 use Carbon\Carbon;
@@ -18,12 +19,15 @@ class ChefController extends Controller
     }
 
     public function create() {
-        return view('restarunt.chef.create');
+        return view('restarunt.chef.create',[
+            'branches' => Branch::where('user_id',Auth::id())->get(),
+        ]);
     }
 
     public function store(Request $request) {
         Chef::insert([
             'user_id' => Auth::id(),
+            'branch_id' => $request->branch_id,
             'name' => $request->name,
             'phone' => $request->phone,
             'address' => $request->address,
@@ -36,12 +40,14 @@ class ChefController extends Controller
 
     public function edit($id) {
         return view('restarunt.chef.edit',[
-            'chef' => Chef::find($id)
+            'chef' => Chef::find($id),
+            'branches' => Branch::where('user_id',Auth::id())->get(),
         ]);
     }
 
     public function update(Request $request) {
         Chef::find($request->id)->update([
+            'branch_id' => $request->branch_id,
             'name' => $request->name,
             'phone' => $request->phone,
             'address' => $request->address,

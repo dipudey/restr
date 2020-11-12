@@ -26,19 +26,17 @@ Route::get('/admin/home',"Admin\DashboardController@index")->name('admin.dashboa
 Route::get('/admin', 'AdminController@showLoginForm');
 Route::post('/admin', 'AdminController@login')->name('admin.login');
 
+//BrachController Routes 
+Route::get('/branch', 'BranchController@showLoginForm');
+Route::post('/branch/login', 'BranchController@login')->name('branch.login');
+
 Route::prefix('admin')->middleware(['auth:admin'])->group(base_path('routes/admin.php'));
 
 Route::group(['middleware' => ['auth'],'prefix' => 'restarunt'],function() {
 
-    Route::get('/table',"Restarunt\TableController@index")->name('table');
-    Route::post('/table/store','Restarunt\TableController@store')->name('table.store');
-    Route::get('/table/edit/{id}',"Restarunt\TableController@edit")->name('table.edit');
-    Route::post('/table/update','Restarunt\TableController@update')->name('table.update');
-    Route::get('/table/destroy/{id}',"Restarunt\TableController@destroy")->name('table.destroy');
-
     // BranchController 
     Route::get('/branch',"Restarunt\BranchController@index")->name('branch');
-    Route::get('/branch/create',"Restarunt\FoodController@create")->name('branch.create');
+    Route::get('/branch/create',"Restarunt\BranchController@create")->name('branch.create');
     Route::post('/branch/store','Restarunt\BranchController@store')->name('branch.store');
     Route::get('/branch/edit/{id}',"Restarunt\BranchController@edit")->name('branch.edit');
     Route::post('/branch/update','Restarunt\BranchController@update')->name('branch.update');
@@ -74,4 +72,18 @@ Route::group(['middleware' => ['auth'],'prefix' => 'restarunt'],function() {
     Route::get('/waiter/{id}/edit','Restarunt\WaiterController@edit')->name('waiter.edit');
     Route::get('/waiter/{id}/destroy','Restarunt\WaiterController@destroy')->name('waiter.destroy');
 
+});
+
+Route::group(['middleware' => ['auth:branch'],'prefix' => 'branch'],function() {
+    Route::get('/home',"Branch\DashboardController@index")->name('branch.dashboard');
+    Route::get('/food/list',"Branch\DashboardController@foodList")->name('branch.food.list');
+    Route::post('/food/add',"Branch\DashboardController@branchFoodAdd")->name('branch.food.add');
+    Route::post('/food/status',"Branch\DashboardController@branchFoodStatus")->name('branch.food.status');
+
+    // TableController Routes 
+    Route::get('/table',"Restarunt\TableController@index")->name('table');
+    Route::post('/table/store','Restarunt\TableController@store')->name('table.store');
+    Route::get('/table/edit/{id}',"Restarunt\TableController@edit")->name('table.edit');
+    Route::post('/table/update','Restarunt\TableController@update')->name('table.update');
+    Route::get('/table/destroy/{id}',"Restarunt\TableController@destroy")->name('table.destroy');
 });

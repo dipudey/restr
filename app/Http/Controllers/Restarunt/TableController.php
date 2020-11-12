@@ -11,14 +11,14 @@ use Auth;
 class TableController extends Controller
 {
     public function index() {
-        return view('restarunt.table.index',[
-            'tables' => Table::where('user_id',Auth::id())->orderBy('id','desc')->get() 
+        return view('branch.table.index',[
+            'tables' => Table::where('branch_id',Auth::id())->orderBy('id','desc')->get() 
         ]);
     }
 
     public function store(Request $request) {
         Table::insert([
-            'user_id' => Auth::id(),
+            'branch_id' => Auth::id(),
             'table_name' => $request->table_name,
             'created_at' => Carbon::now()
         ]);

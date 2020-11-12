@@ -30,7 +30,17 @@
                     <div class="form-group">
                         <label for="">Address <span class="text-danger">*</span></label>
                         <input type="text" name="address" value="{{ $waiter->address }}" class="form-control" >
-                    </div> 
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="">Branch <span class="text-danger">*</span></label>
+                        <select name="branch_id" id="" class="form-control" required>
+                            <option value="">select</option>
+                            @foreach ($branches as $branch)
+                                <option value="{{ $branch->id }}" {{ $branch->id == $chef->branch_id?'selected':'' }}>{{ $branch->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
                     <div class="text-center mt-4">
                         <button type="submit" class="btn btn-success">Update</button>

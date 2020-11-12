@@ -52,6 +52,11 @@ return [
             'provider' => 'admins',
         ],
 
+        'branch' => [
+            'driver' => 'session',
+            'provider' => 'branches',
+        ],
+
         'waiter' => [
             'driver' => 'session',
             'provider' => 'waiters',
@@ -89,6 +94,11 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
+        ],
+
+        'branches' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Branch::class,
         ],
 
         'waiters' => [
@@ -131,6 +141,12 @@ return [
         ],
         'admins' => [
             'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'branches' => [
+            'provider' => 'branches',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

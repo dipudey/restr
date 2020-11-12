@@ -25,8 +25,7 @@
                                 <th class="wd-10p border-bottom-0">Picture</th>
                                 <th class="wd-10p border-bottom-0">Food Category Name</th>
                                 <th class="wd-10p border-bottom-0">Price</th>
-                                <th class="wd-10p border-bottom-0">Discount</th>
-                                <th class="wd-10p border-bottom-0">Status</th>
+                                <th class="wd-10p border-bottom-0">Discount Price</th>
                                 <th class="wd-10p border-bottom-0">Action</th>
                             </tr>
                         </thead>
@@ -40,14 +39,15 @@
                                     </td>
                                     <td>{{ $food->category->category_name }}</td>
                                     <td>{{ $food->price }}</td>
-                                    <td>{{ $food->discount }}</td>
+                                    <td>{{ $food->discount_price }}</td>
+                                    {{-- <td>{{ $food->discount }}</td>
                                     <td>
                                         @if ($food->status == 0)
                                             <div class="badge badge-danger">Unavailable</div>
                                         @else
                                             <div class="badge badge-success">Available</div>
                                         @endif
-                                    </td>
+                                    </td> --}}
                                     <td>
                                         <div class="btn-group">
                                             <a href="{{ route('food.edit',$food->id) }}" class="btn btn-sm btn-success text-white"><i class="typcn typcn-edit"></i></a>

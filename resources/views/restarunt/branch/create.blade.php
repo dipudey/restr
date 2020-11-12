@@ -8,14 +8,14 @@
         <div class="card">
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
-                    <h4 class="card-title mg-b-0">Create New waiter</h4>
+                    <h4 class="card-title mg-b-0">Create New Branch</h4>
                 </div>
             </div>
             <div class="card-body mt-4">
-                <form action="{{ route('waiter.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('branch.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for=""> Name <span class="text-danger">*</span> </label>
+                        <label for="">Branch Name <span class="text-danger">*</span> </label>
                         <input type="text" name="name" class="form-control" required>
                     </div>
                     <div class="form-group">
@@ -29,15 +29,6 @@
                     <div class="form-group">
                         <label for="">Address <span class="text-danger">*</span></label>
                         <input type="text" name="address" class="form-control" >
-                    </div>
-                    <div class="form-group">
-                        <label for="">Branch <span class="text-danger">*</span></label>
-                        <select name="branch_id" id="" class="form-control" required>
-                            <option value="">select</option>
-                            @foreach ($branches as $branch)
-                                <option value="{{ $branch->id }}">{{ $branch->name }}</option>
-                            @endforeach
-                        </select>
                     </div>
                     <div class="form-group">
                         <label for="">Password <span class="text-danger">*</span></label>

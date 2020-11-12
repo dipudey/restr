@@ -11,4 +11,8 @@ class Food extends Model
     public function category() {
         return $this->belongsTo(FoodCategory::class,'food_category_id');
     }
+
+    public function branchFood() {
+        return $this->hasOne(BranchFood::class,'food_id');
+    }
 }
