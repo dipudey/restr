@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\BranchCollection;
+use App\Http\Resources\BranchResource;
 use App\Http\Requests\BranchRequest;
+use Symfony\Component\HttpFoundation\Response;
 use App\Models\Branch;
 use Carbon\Carbon;
 use Hash;
@@ -81,6 +83,19 @@ class BranchController extends Controller
 
         if($branch) {
             return true;
+        }
+    }
+
+    public function login(Request $request) {
+        $validData = Branch::where('phone',$request->phone)->first();
+        $password_check = password_verify($request->password,@$validData->password);
+        if($password_check == false) {
+            return response([
+                'errors' => "Phone Number & Password Does Not Match"
+            ],Response::HTTP_UNAUTHORIZED);
+        }
+        else{
+            return response(new BranchResource($validData),Response::HTTP_OK);
         }
     }
 }

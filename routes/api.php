@@ -23,17 +23,18 @@ Route::post('/restaurant/login',"Api\RestaurantController@login");
 //PackageControll 
 Route::get('/package',"Api\PackageController@index");
 
-// BranchController Routes 
+// BranchController Routes
+Route::post('/branch/login',"Api\BranchController@login");
 Route::get('/branch/{user_id}',"Api\BranchController@index");
 Route::post('/branch/store',"Api\BranchController@store");
 Route::post('/branch/update/{id}',"Api\BranchController@update");
 Route::post('/branch/delete/{id}',"Api\BranchController@destroy");
 
 // Restaurant TableController
-// Route::get('/table/{user_id}',"Api\TableController@index");
-// Route::post('/table/store',"Api\TableController@store");
-// Route::post('/table/update/{table_id}',"Api\TableController@update");
-// Route::post('/table/destroy/{table_id}',"Api\TableController@destroy");
+Route::get('/table/{branch_id}',"Api\TableController@index");
+Route::post('/table/store',"Api\TableController@store");
+Route::post('/table/update/{table_id}',"Api\TableController@update");
+Route::post('/table/destroy/{table_id}',"Api\TableController@destroy");
 
 // Restaurant FoodCategoryController
 Route::get('/food/category/{user_id}',"Api\FoodCategoryController@index");

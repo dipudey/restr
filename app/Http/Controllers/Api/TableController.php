@@ -16,9 +16,9 @@ class TableController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($user_id)
+    public function index($branch_id)
     {
-        return TableCollection::collection(Table::where('user_id',$user_id)->get());
+        return TableCollection::collection(Table::where('branch_id',$branch_id)->get());
     }
 
     /**
@@ -30,7 +30,7 @@ class TableController extends Controller
     public function store(Request $request)
     {
         $success = Table::insert([
-            'user_id' => $request->user_id,
+            'branch_id' => $request->branch_id,
             'table_name' => $request->table_name,
             'created_at' => Carbon::now()
         ]);
