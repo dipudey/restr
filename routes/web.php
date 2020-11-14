@@ -20,14 +20,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile',"HomeController@profile")->name('restarunt.profile');
 
 //AdminController Routes
 Route::get('/admin/home',"Admin\DashboardController@index")->name('admin.dashboard');
-Route::get('/admin', 'AdminController@showLoginForm');
+Route::get('/admin', 'AdminController@showLoginForm')->middleware('adminguest');
 Route::post('/admin', 'AdminController@login')->name('admin.login');
+Route::get('/admin/profile',"HomeController@profile")->name('admin.profile');
 
 //BrachController Routes 
-Route::get('/branch', 'BranchController@showLoginForm');
+Route::get('/branch', 'BranchController@showLoginForm')->middleware('branchguest');
 Route::post('/branch/login', 'BranchController@login')->name('branch.login');
 
 Route::prefix('admin')->middleware(['auth:admin'])->group(base_path('routes/admin.php'));
@@ -76,6 +78,8 @@ Route::group(['middleware' => ['auth'],'prefix' => 'restarunt'],function() {
 
 Route::group(['middleware' => ['auth:branch'],'prefix' => 'branch'],function() {
     Route::get('/home',"Branch\DashboardController@index")->name('branch.dashboard');
+    Route::get('/profile',"HomeController@profile")->name('branch.profile');
+
     Route::get('/food/list',"Branch\DashboardController@foodList")->name('branch.food.list');
     Route::post('/food/add',"Branch\DashboardController@branchFoodAdd")->name('branch.food.add');
     Route::post('/food/status',"Branch\DashboardController@branchFoodStatus")->name('branch.food.status');
@@ -87,3 +91,5 @@ Route::group(['middleware' => ['auth:branch'],'prefix' => 'branch'],function() {
     Route::post('/table/update','Restarunt\TableController@update')->name('table.update');
     Route::get('/table/destroy/{id}',"Restarunt\TableController@destroy")->name('table.destroy');
 });
+
+// Route::get('/profile',"");
