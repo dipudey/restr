@@ -18,6 +18,7 @@ class DashboardController extends Controller
     public function foodList() {
         return view('branch.foodList',[
             'foods' => Food::with('branchFood')->get(),
+            // 'foods' => Food::get(),
         ]);
     }
 

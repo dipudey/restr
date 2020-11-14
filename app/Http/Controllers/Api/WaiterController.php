@@ -7,6 +7,8 @@ use App\Http\Resources\WaiterCollection;
 use App\Http\Requests\WaiterRequest;
 use Illuminate\Http\Request;
 use App\Models\Waiter;
+use App\Models\Package;
+use App\User;
 use Carbon\Carbon;
 use Hash;
 
@@ -31,6 +33,17 @@ class WaiterController extends Controller
      */
     public function store(WaiterRequest $request)
     {
+        $restarunt = User::find($request->user_id);
+        $package = Package::find($restarunt->package_id);
+        $waiter = Waiter::where('user_id',$request->user_id)->count();
+
+        if(filter_var($package->waiter, FILTER_VALIDATE_INT) == $waiter) {
+            return response()->json([
+                'errors' => "Waiter Limit Exceed"
+            ]);
+        }
+
+
         $waiter = Waiter::create([
             'user_id' => $request->user_id,
             'branch_id' => $request->branch_id,

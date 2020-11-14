@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Food extends Model
 {
@@ -13,6 +14,6 @@ class Food extends Model
     }
 
     public function branchFood() {
-        return $this->hasOne(BranchFood::class,'food_id');
+        return $this->hasOne(BranchFood::class,'food_id')->where('branch_id',Auth::id());
     }
 }
