@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ChefCollection;
+use App\Http\Resources\ChefResource;
 use App\Http\Requests\ChefRequest;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Models\Chef;
 use Carbon\Carbon;
@@ -83,6 +85,20 @@ class ChefController extends Controller
 
         if($chef) {
             return true;
+        }
+    }
+
+
+    public function login(Request $request) {
+        $validData = Chef::where('phone',$request->phone)->first();
+        $password_check = password_verify($request->password,@$validData->password);
+        if($password_check == false) {
+            return response([
+                'errors' => "Phone Number & Password Does Not Match"
+            ],Response::HTTP_UNAUTHORIZED);
+        }
+        else{
+            return response(new ChefResource($validData),Response::HTTP_OK);
         }
     }
 }

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class BranchFood extends Model
 {
-    protected $guarded = [];
+    protected $guarded = []; 
 }

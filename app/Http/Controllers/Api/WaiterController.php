@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\WaiterCollection;
+use App\Http\Resources\WaiterResource;
+use Symfony\Component\HttpFoundation\Response;
 use App\Http\Requests\WaiterRequest;
 use Illuminate\Http\Request;
 use App\Models\Waiter;
@@ -95,6 +97,20 @@ class WaiterController extends Controller
 
         if($waiter) {
             return true;
+        }
+    }
+
+
+    public function login(Request $request) {
+        $validData = Waiter::where('phone',$request->phone)->first();
+        $password_check = password_verify($request->password,@$validData->password);
+        if($password_check == false) {
+            return response([
+                'errors' => "Phone Number & Password Does Not Match"
+            ],Response::HTTP_UNAUTHORIZED);
+        }
+        else{
+            return response(new WaiterResource($validData),Response::HTTP_OK);
         }
     }
 }

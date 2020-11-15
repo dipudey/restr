@@ -130,9 +130,28 @@ class FoodController extends Controller
         }
     }
 
-    public function categoryWiseFood($user_id) {
-        return CategoryWishFoodCollection::collection(FoodCategory::where('user_id',$user_id)->get());
+    public function categoryWiseFood($user_id,$branch_id) {
+        $result = [];
+        $categories= FoodCategory::where('user_id',$user_id)->get();
+
+        foreach($categories as $category) {
+            $result[] = [
+                'id' => $category->id,
+                'user_id' => $category->user_id,
+                'category_name' => $category->category_name,
+                'foods' => CategoryWishFoodCollection::collection(\DB::table('food')
+                                                                        ->join('branch_food','branch_food.food_id','=','food.id')
+                                                                        ->select('*')
+                                                                        ->where('branch_id',$branch_id)
+                                                                        ->where('food_category_id',$category->id)
+                                                                        ->get())
+            ];
+        }
+    
+        return $result;
+
     }
+
 
     private function imageUpload($file) {
         $name = uniqid().".".$file->getClientOriginalExtension();
