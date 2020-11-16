@@ -16,6 +16,7 @@ class FoodCollection extends JsonResource
     {
         return [
             'id' => $this->id,
+            'food_name' => $this->food_name,
             'food_category' => $this->category->category_name,
             'price' => $this->price,
             'discount_percentage' => $this->discount_percentage,
