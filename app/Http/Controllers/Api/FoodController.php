@@ -148,7 +148,10 @@ class FoodController extends Controller
             ];
         }
     
-        return $result;
+        // return $result;
+        return response()->json([
+            'data' => $result
+        ]);
 
     }
 
