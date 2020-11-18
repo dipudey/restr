@@ -62,3 +62,13 @@ Route::get('/waiter/{user_id}',"Api\WaiterController@index");
 Route::post('/waiter/store',"Api\WaiterController@store");
 Route::post('/waiter/update/{id}',"Api\WaiterController@update");
 Route::post('/waiter/destroy/{id}',"Api\WaiterController@destroy");
+
+
+// Branch Food
+
+// Route::get('/branch/food/list/{user_id}/{branch_id}',"Api\BranchFoodController@index");
+Route::get('/category/food/list/{user_id}',"Api\BranchFoodController@categoryWishFood");
+Route::post('/branch/food/add/{branch_id}/{food_id}',"Api\BranchFoodController@branchFoodAdd");
+Route::get('/branch/food/list/{user_id}/{branch_id}',"Api\BranchFoodController@branchFoodList");
+Route::post('/branch/food/delete/{branch_food_id}',"Api\BranchFoodController@deleteFood");
+Route::post('/branch/food/status/updated/{branch_food_id}',"Api\BranchFoodController@foodStatusUpdated");

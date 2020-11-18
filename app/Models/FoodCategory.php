@@ -13,4 +13,7 @@ class FoodCategory extends Model
     public function food() {
         return $this->hasMany(Food::class,'food_category_id');
     }
+
+
+    
 }
