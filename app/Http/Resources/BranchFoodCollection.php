@@ -23,6 +23,7 @@ class BranchFoodCollection extends JsonResource
             'discount_amount' => $this->discount_amount,
             'discount_price' => $this->discount_price,
             'picture' => "/uploads/".$this->picture,
+            'status' => $this->status,
         ];
     }
 }
