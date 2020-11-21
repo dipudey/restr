@@ -72,3 +72,7 @@ Route::post('/branch/food/add/{branch_id}/{food_id}',"Api\BranchFoodController@b
 Route::get('/branch/food/list/{user_id}/{branch_id}',"Api\BranchFoodController@branchFoodList");
 Route::post('/branch/food/delete/{branch_food_id}',"Api\BranchFoodController@deleteFood");
 Route::post('/branch/food/status/updated/{branch_food_id}',"Api\BranchFoodController@foodStatusUpdated");
+
+
+// OrderController 
+Route::post('/order',"Api\OrderController@order");
