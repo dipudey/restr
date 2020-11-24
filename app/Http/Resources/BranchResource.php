@@ -22,6 +22,7 @@ class BranchResource extends JsonResource
             'address' => $this->address,
             'user_category' => $this->user_category,
             'restarunt_id' => $this->user_id,
+            'expaier_date' => $this->user->expaier_date,
         ];
     }
 }

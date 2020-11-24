@@ -4,10 +4,10 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TableResource extends JsonResource
+class OrderFoodCollection extends JsonResource
 {
     /**
-     * Transform the resource into an array.
+     * Transform the resource collection into an array.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array
@@ -15,8 +15,9 @@ class TableResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'table_name' => $this->table_name,
+            'food' => $this->food->food_name,
+            'picture' => "/uploads/".$this->food->picture,
+            'qty' => $this->qty, 
         ];
     }
 }

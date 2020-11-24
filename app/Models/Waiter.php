@@ -12,6 +12,8 @@ class Waiter extends Model
         return $this->belongsTo('App\User','user_id');
     }
 
+    
+
     public function branch() {
         return $this->belongsTo(Branch::class,'branch_id');
     }

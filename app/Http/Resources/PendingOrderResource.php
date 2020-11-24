@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class TableResource extends JsonResource
+class PendingOrderResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,8 +15,8 @@ class TableResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'table_name' => $this->table_name,
+            // 'total_pending' => $this->count(),
+            // 'table' => 
         ];
     }
 }

@@ -76,3 +76,11 @@ Route::post('/branch/food/status/updated/{branch_food_id}',"Api\BranchFoodContro
 
 // OrderController 
 Route::post('/order',"Api\OrderController@order");
+Route::get('/chef/today/food/order/{user_id}/{branch_id}',"Api\OrderController@chefTodayOrder");
+Route::post('/chef/order/status/update',"Api\OrderController@statusUpdate");
+
+Route::get('/waiter/today/pendig/order/{user_id}/{waiter_id}',"Api\OrderController@waitePendingOrder");
+Route::get('/waiter/today/cooking/order/{user_id}/{waiter_id}',"Api\OrderController@waiteCookingOrder");
+Route::get('/waiter/today/ready/order/{user_id}/{waiter_id}',"Api\OrderController@waiteReadyOrder");
+Route::post('/waiter/order/status/update',"Api\OrderController@waiterStatusUpdate");
+Route::get('/order/live/data/{order_id}',"Api\OrderController@liveData");

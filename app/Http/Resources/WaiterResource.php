@@ -23,6 +23,7 @@ class WaiterResource extends JsonResource
             'user_category' => $this->user_category,
             'restarunt' => $this->user_id,
             'branch_id' => $this->branch_id,
+            'expaier_date' => $this->user->expaier_date,
         ];
     }
 }

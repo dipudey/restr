@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderFood;
 use App\Models\Food;
+use App\Http\Resources\ChefTodayOrderCollection;
+use App\Http\Resources\PendingOrderResource;
 use Carbon\Carbon;
 
 class OrderController extends Controller
@@ -42,5 +44,97 @@ class OrderController extends Controller
             'data' => "Order Send Successfully"
         ]);
 
+    }
+
+    public function chefTodayOrder($user_id,$branch_id){
+        return ChefTodayOrderCollection::collection(Order::where('order_date',date('Y-m-d'))->where('user_id',$user_id)->where('branch_id',$branch_id)->get());
+    }
+
+    public function statusUpdate(Request $request) {
+        Order::findOrFail($request->order_id)->update([
+            'status' => $request->status
+        ]);
+
+        return response()->json([
+            'data' => "Coocking"
+        ]);
+    }
+
+    public function waitePendingOrder($user_id,$waiter_id) {
+
+        $data = Order::where('order_date',date('Y-m-d'))->where('status',0)->where('user_id',$user_id)->where('waiter_id',$waiter_id)->get();
+        $pending_table = [];
+
+        foreach($data as $item) {
+            $pending_table[] = [
+                'order_id' => $item->id,
+                'table_name' => $item->table->table_name
+            ];
+        }
+
+        $pending = [];
+        $pending[] = [
+            'total_pending' => $data->count(),
+            'pending_table' => $pending_table
+        ];
+
+        return $pending;
+    }
+
+    public function waiteCookingOrder($user_id,$waiter_id) {
+        $data = Order::where('order_date',date('Y-m-d'))->where('status',1)->where('user_id',$user_id)->where('waiter_id',$waiter_id)->get();
+        $cooking_table = [];
+
+        foreach($data as $item) {
+            $cooking_table[] = [
+                'order_id' => $item->id,
+                'table_name' => $item->table->table_name
+            ];
+        }
+
+        $coocking = [];
+        $coocking[] = [
+            'total_cooking' => $data->count(),
+            'cooking_table' => $cooking_table
+        ];
+
+        return $coocking;
+    }
+    
+    public function waiteReadyOrder($user_id,$waiter_id) {
+        $data = Order::where('order_date',date('Y-m-d'))->where('status',2)->where('user_id',$user_id)->where('waiter_id',$waiter_id)->get();
+        $ready_table = [];
+
+        foreach($data as $item) {
+            $ready_table[] = [
+                'order_id' => $item->id,
+                'table_name' => $item->table->table_name
+            ];
+        }
+
+        $ready = [];
+        $ready[] = [
+            'total_ready' => $data->count(),
+            'ready_table' => $ready_table
+        ];
+
+        return $ready;
+    } 
+
+    public function waiterStatusUpdate(Request $request) {
+        Order::findOrFail($request->order_id)->update([
+            'status' => $request->status
+        ]);
+
+        return response()->json([
+            'data' => "Order Delivered"
+        ]);
+    }
+
+
+    public function liveData($order_id) {
+        return response()->json([
+            'status' => Order::find($order_id)->status
+        ]);
     }
 }
