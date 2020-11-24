@@ -27,6 +27,8 @@ class CategoryWishFoodCollection extends JsonResource
             'discount_price' => $this->discount_price,
             'picture' => "/uploads/".$this->picture,
             'status' => $this->status,
+            'quantity' => 1,
+            'isChecked' => true
         ];
     }
 
