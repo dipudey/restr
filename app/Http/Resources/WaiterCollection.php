@@ -22,6 +22,7 @@ class WaiterCollection extends JsonResource
             'address' => $this->address,
             'user_category' => $this->user_category,
             'restarunt' => $this->user->restaurant_name,
+            'branch_id' => $this->branch_id
         ];
     }
 }

@@ -65,22 +65,26 @@ Route::post('/waiter/destroy/{id}',"Api\WaiterController@destroy");
 
 
 // Branch Food
-
-// Route::get('/branch/food/list/{user_id}/{branch_id}',"Api\BranchFoodController@index");
 Route::get('/category/food/list/{user_id}',"Api\BranchFoodController@categoryWishFood");
 Route::post('/branch/food/add/{branch_id}/{food_id}',"Api\BranchFoodController@branchFoodAdd");
 Route::get('/branch/food/list/{user_id}/{branch_id}',"Api\BranchFoodController@branchFoodList");
 Route::post('/branch/food/delete/{branch_food_id}',"Api\BranchFoodController@deleteFood");
 Route::post('/branch/food/status/updated/{branch_food_id}',"Api\BranchFoodController@foodStatusUpdated");
 
-
 // OrderController 
 Route::post('/order',"Api\OrderController@order");
 Route::get('/chef/today/food/order/{user_id}/{branch_id}',"Api\OrderController@chefTodayOrder");
 Route::post('/chef/order/status/update',"Api\OrderController@statusUpdate");
 
-Route::get('/waiter/today/pendig/order/{user_id}/{waiter_id}',"Api\OrderController@waitePendingOrder");
+Route::get('/waiter/today/pending/order/{user_id}/{waiter_id}',"Api\OrderController@waitePendingOrder");
 Route::get('/waiter/today/cooking/order/{user_id}/{waiter_id}',"Api\OrderController@waiteCookingOrder");
 Route::get('/waiter/today/ready/order/{user_id}/{waiter_id}',"Api\OrderController@waiteReadyOrder");
 Route::post('/waiter/order/status/update',"Api\OrderController@waiterStatusUpdate");
+Route::get('/waiter/today/order/{waiter_id}',"Api\OrderController@waiterTodayOrder");
+Route::post('/food/re/order',"Api\OrderController@foodReOrder");
+
+Route::get('/today/order/status/list/{waiter_id}',"Api\OrderController@todayOrderStatusList");
+Route::get('/chef/today/order/status/list/{user_id}/{branch_id}',"Api\OrderController@chefTodayOrderStatusList");
+
+
 Route::get('/order/live/data/{order_id}',"Api\OrderController@liveData");

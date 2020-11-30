@@ -17,7 +17,9 @@ class OrderFoodCollection extends JsonResource
         return [
             'food' => $this->food->food_name,
             'picture' => "/uploads/".$this->food->picture,
-            'qty' => $this->qty, 
+            'qty' => $this->qty,
+            'status' => $this->status,
+            'order_time' => $this->created_at->diffForHumans()
         ];
     }
 }
