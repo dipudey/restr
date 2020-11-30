@@ -86,5 +86,9 @@ Route::post('/food/re/order',"Api\OrderController@foodReOrder");
 Route::get('/today/order/status/list/{waiter_id}',"Api\OrderController@todayOrderStatusList");
 Route::get('/chef/today/order/status/list/{user_id}/{branch_id}',"Api\OrderController@chefTodayOrderStatusList");
 
-
 Route::get('/order/live/data/{order_id}',"Api\OrderController@liveData");
+
+
+Route::get('/branch/dashboard/{branch_id}',"Api\DashboardController@branchDashboard");
+Route::get('/branch/waiter/order/{branch_id}',"Api\DashboardController@waiterOrder");
+Route::get('/popular/food/{branch_id}',"Api\DashboardController@popularFood");
