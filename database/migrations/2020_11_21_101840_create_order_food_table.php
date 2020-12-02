@@ -20,6 +20,8 @@ class CreateOrderFoodTable extends Migration
             $table->float('price');
             $table->integer('qty');
             $table->float('total_price')->nullable();
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->foreign('food_id')->references('id')->on('food')->onDelete('cascade');
             $table->timestamps();
         });
     }

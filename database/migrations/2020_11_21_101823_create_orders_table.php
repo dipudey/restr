@@ -23,6 +23,10 @@ class CreateOrdersTable extends Migration
             $table->time('order_time')->nullable();
             $table->integer('total_price')->nullable();
             $table->integer('status')->default(0);
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            $table->foreign('waiter_id')->references('id')->on('waiters')->onDelete('cascade');
+            $table->foreign('table_id')->references('id')->on('tables')->onDelete('cascade');
             $table->timestamps();
         });
     }

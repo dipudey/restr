@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\RestaurantRequest;
 use App\Http\Resources\RestaruntRegisterResource;
 use App\User;
+use App\Models\Payment;
 use Carbon\Carbon;
 use Hash;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,6 +34,16 @@ class RestaurantController extends Controller
             'package_id' => $request->package_id,
             'password' => Hash::make($request->password),
         ]);
+        
+        if($request->package_id != 1) {
+            Payment::insert([
+                'user_id' => $user_id,
+                'payment_type' => $request->payment_type,
+                'payment_to' => $request->payment_to,
+                'transation' => $request->transation,
+                'created_at' => Carbon::now(),
+            ]);
+        }
 
         return response(new RestaruntRegisterResource(User::find($user_id)),Response::HTTP_CREATED);
     }

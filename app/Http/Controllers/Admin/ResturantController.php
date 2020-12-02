@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\RestaurantRequest;
 use App\Models\Package;
+use App\Models\Payment;
 use App\User;
 use Hash;
 
@@ -42,6 +43,8 @@ class ResturantController extends Controller
             'package_id' => $request->package_id,
             'password' => Hash::make($request->password),
         ]);
+        
+        
 
         return redirect()->route('restaurant')->with('message',"New Restaurant Registration Successfully");
     }

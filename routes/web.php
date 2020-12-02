@@ -65,7 +65,6 @@ Route::group(['middleware' => ['auth'],'prefix' => 'restarunt'],function() {
     Route::get('/chef/{id}/edit','Restarunt\ChefController@edit')->name('chef.edit');
     Route::get('/chef/{id}/destroy','Restarunt\ChefController@destroy')->name('chef.destroy');
 
-
     //WaiterController Routes 
     Route::get('/waiter','Restarunt\WaiterController@index')->name('waiter');
     Route::get('/waiter/create','Restarunt\WaiterController@create')->name('waiter.create');
@@ -74,7 +73,23 @@ Route::group(['middleware' => ['auth'],'prefix' => 'restarunt'],function() {
     Route::get('/waiter/{id}/edit','Restarunt\WaiterController@edit')->name('waiter.edit');
     Route::get('/waiter/{id}/destroy','Restarunt\WaiterController@destroy')->name('waiter.destroy');
 
+    // ProductController Routes 
+    Route::get('/product',"Restarunt\ProductController@index")->name('product');
+    Route::post('/product/store',"Restarunt\ProductController@store")->name('product.store');
+    Route::get('/product/{id}/edit',"Restarunt\ProductController@edit")->name('product.edit');
+    Route::post('/product/update',"Restarunt\ProductController@update")->name('product.update');
+    Route::get('/product/{id}/destroy',"Restarunt\ProductController@destroy")->name('product.destroy');
+
+    // SupplierController  Routes 
+    Route::get('/supplier',"Restarunt\SupplierController@index")->name('supplier');
+    Route::post('/supplier/store',"Restarunt\SupplierController@store")->name('supplier.store');
+    Route::get('/supplier/{id}/edit',"Restarunt\SupplierController@edit")->name('supplier.edit');
+    Route::post('/supplier/update',"Restarunt\SupplierController@update")->name('supplier.update');
+    Route::get('/supplier/{id}/destroy',"Restarunt\SupplierController@destroy")->name('supplier.destroy');
+
 });
+
+
 
 Route::group(['middleware' => ['auth:branch'],'prefix' => 'branch'],function() {
     Route::get('/home',"Branch\DashboardController@index")->name('branch.dashboard');

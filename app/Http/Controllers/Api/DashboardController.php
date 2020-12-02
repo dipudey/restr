@@ -49,7 +49,10 @@ class DashboardController extends Controller
             ];
         }
 
-        return $today_waiter_order;
+
+        return response()->json([
+            'data' => $today_waiter_order
+        ]);
 
     }
 
