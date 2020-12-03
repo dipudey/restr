@@ -87,6 +87,46 @@ Route::group(['middleware' => ['auth'],'prefix' => 'restarunt'],function() {
     Route::post('/supplier/update',"Restarunt\SupplierController@update")->name('supplier.update');
     Route::get('/supplier/{id}/destroy',"Restarunt\SupplierController@destroy")->name('supplier.destroy');
 
+    // PurchaseController  Routes 
+    Route::get('/purchase',"Restarunt\PurchaseController@index")->name('purchase');
+    Route::get('/purchase-product',"Restarunt\PurchaseController@create")->name('purchase.create');
+    Route::post('/purchase/store',"Restarunt\PurchaseController@store")->name('purchase.store');
+    Route::get('/purchase/{id}/edit',"Restarunt\PurchaseController@edit")->name('purchase.edit');
+    Route::post('/purchase/update',"Restarunt\PurchaseController@update")->name('purchase.update');
+    Route::get('/purchase/{id}/destroy',"Restarunt\PurchaseController@destroy")->name('purchase.destroy');
+
+    // StockContoller Routes 
+    Route::get('/stock',"Restarunt\StockController@index")->name('stock');
+
+
+    // ExpenseController Routes 
+    Route::get('/expense-type',"Restarunt\ExpenseController@index")->name('expense.type');
+    Route::post('/expense-type/store',"Restarunt\ExpenseController@store")->name('expense.type.store');
+    Route::get('/expense-type/{id}/edit',"Restarunt\ExpenseController@edit")->name('expense.type.edit');
+    Route::post('/expense-type/update',"Restarunt\ExpenseController@update")->name('expense.type.update');
+    Route::get('/expense-type/{id}/destroy',"Restarunt\ExpenseController@destroy")->name('expense.type.destroy');
+
+    Route::get('/expense',"Restarunt\ExpenseController@expenseList")->name('expense');
+    Route::post('/expense/store',"Restarunt\ExpenseController@expenseStore")->name('expense.store');
+    Route::get('/expense/{id}/edit',"Restarunt\ExpenseController@expenseEdit")->name('expense.edit');
+    Route::post('/expense/update',"Restarunt\ExpenseController@expenseUpdate")->name('expense.update');
+    Route::get('/expense/{id}/destroy',"Restarunt\ExpenseController@expenseDelete")->name('expense.destroy');
+
+
+    // ReservarionController  Routes 
+    Route::get('/reservation',"Restarunt\ReservationController@index")->name('reservation');
+    Route::get('/reservation-add',"Restarunt\ReservationController@create")->name('reservation.create');
+    Route::post('/reservation/store',"Restarunt\ReservationController@store")->name('reservation.store');
+    Route::get('/reservation/{id}/edit',"Restarunt\ReservationController@edit")->name('reservation.edit');
+    Route::post('/reservation/update',"Restarunt\ReservationController@update")->name('reservation.update');
+    Route::get('/reservation/{id}/destroy',"Restarunt\ReservationController@destroy")->name('reservation.destroy');
+    Route::get('/reservation/branch/table/{branch_id}',"Restarunt\ReservationController@reservationTable");
+
+    // SaleController Routes
+    Route::get('/today/sale/food',"Restarunt\SaleController@todaySaleFoodList")->name('today.sale.food');
+
+
+
 });
 
 
