@@ -21,6 +21,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile',"HomeController@profile")->name('restarunt.profile');
+Route::post('/profile/update',"HomeController@profileUpdate")->name('restarunt.profile.update');
+Route::get('/change/password',"HomeController@changePassword")->name('change.password');
+Route::post('/password/update',"HomeController@passwordUpdate")->name('password.update');
 
 //AdminController Routes
 Route::get('/admin/home',"Admin\DashboardController@index")->name('admin.dashboard');
@@ -124,7 +127,14 @@ Route::group(['middleware' => ['auth'],'prefix' => 'restarunt'],function() {
 
     // SaleController Routes
     Route::get('/today/sale/food',"Restarunt\SaleController@todaySaleFoodList")->name('today.sale.food');
+    Route::get('/today/sale',"Restarunt\SaleController@todaySale")->name('today.sale');
+    Route::get('/sale',"Restarunt\SaleController@sale")->name('sale');
+    Route::get('/invoice/{id}',"Restarunt\SaleController@invoice")->name('sale.invoice');
 
+    // ReportController Routes
+    Route::get('/sale/report',"Restarunt\ReportController@saleReport")->name('sale.report');
+    Route::get('/expense/report',"Restarunt\ReportController@expenseReport")->name('expense.report');
+    Route::get('/purches/report',"Restarunt\ReportController@purchesReport")->name('purches.report');
 
 
 });
@@ -134,6 +144,9 @@ Route::group(['middleware' => ['auth'],'prefix' => 'restarunt'],function() {
 Route::group(['middleware' => ['auth:branch'],'prefix' => 'branch'],function() {
     Route::get('/home',"Branch\DashboardController@index")->name('branch.dashboard');
     Route::get('/profile',"HomeController@profile")->name('branch.profile');
+    
+    Route::get('/pos',"Branch\PosController@pos")->name('pos');
+    Route::post('/food/category',"Branch\PosController@foodCategory");
 
     Route::get('/food/list',"Branch\DashboardController@foodList")->name('branch.food.list');
     Route::post('/food/add',"Branch\DashboardController@branchFoodAdd")->name('branch.food.add');

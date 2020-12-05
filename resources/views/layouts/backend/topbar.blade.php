@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="main-header-left ">
             <div class="responsive-logo">
-                <a href=""><img src="{!! asset('backend') !!}/img/brand/logo.png" class="logo-1" alt="logo"></a>
+                <a href=""><img src="{!! asset('backend') !!}/img/brand/logo.png" class="logo-1" alt="logo" style="height: 53px"></a>
                 <a href=""><img src="{!! asset('backend') !!}/img/brand/logo-white.png" class="dark-logo-1" alt="logo"></a>
                 <a href=""><img src="{!! asset('backend') !!}/img/brand/favicon.png" class="logo-2" alt="logo"></a>
                 <a href=""><img src="{!! asset('backend') !!}/img/brand/favicon.png" class="dark-logo-2" alt="logo"></a>
@@ -12,9 +12,9 @@
                 <a class="open-toggle" href="#"><i class="header-icon fe fe-align-left" ></i></a>
                 <a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
             </div>
-            <div class="main-header-center ml-3 d-sm-none d-md-none d-lg-block">
+            {{-- <div class="main-header-center ml-3 d-sm-none d-md-none d-lg-block">
                 <input class="form-control" placeholder="Search for anything..." type="search"> <button class="btn"><i class="fas fa-search d-none d-md-block"></i></button>
-            </div>
+            </div> --}}
         </div>
 
         <div class="main-header-right">
@@ -75,7 +75,7 @@
                             <a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="bx bx-user-circle"></i>Profile</a>
                         @endif
                         
-                        <a class="dropdown-item" href="#"><i class="bx bx-slider-alt"></i> Change Password</a>
+                        <a class="dropdown-item" href="{{ route('change.password') }}"><i class="bx bx-slider-alt"></i> Change Password</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();" ><i class="bx bx-log-out"></i> Sign Out</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

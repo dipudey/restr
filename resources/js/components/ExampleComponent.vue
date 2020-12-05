@@ -1,23 +1,29 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
+  <div id="pos">
+    
+    <h1>Ok</h1>
 
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </template>
 
 <script>
     export default {
+        name: "pos",
         mounted() {
-            console.log('Component mounted.')
+            
+        },
+        created() {
+            
+
+        },
+        data: () => ({
+        
+        }),
+        methods: {
+        
         }
     }
 </script>
+<style lang="scss" scoped>
+
+</style>

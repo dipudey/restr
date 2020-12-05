@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Food;
 use App\Models\BranchFood;
+use App\Models\Branch;
 use Carbon\Carbon;
 use Auth;
 
@@ -15,9 +16,15 @@ class DashboardController extends Controller
         return view('branch.dashboard');
     }
 
+    public function pos() {
+        return view('branch.pos.index');
+    }
+
     public function foodList() {
+        $branch = Branch::find(Auth::id());
+        // dd($branch);
         return view('branch.foodList',[
-            'foods' => Food::with('branchFood')->get(),
+            'foods' => Food::with('branchFood')->where('user_id',$branch->user_id)->get(),
             // 'foods' => Food::get(),
         ]);
     }

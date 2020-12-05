@@ -38,4 +38,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function totalBranch() {
+        return $this->hasMany("App\Models\Branch","user_id");
+    }
+
+    public function totalWaiter() {
+        return $this->hasMany("App\Models\Waiter","user_id");
+    }
+
+    public function foodItem() {
+        return $this->hasMany("App\Models\Food","user_id");
+    }
 }
