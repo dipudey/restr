@@ -61,4 +61,47 @@ class DashboardController extends Controller
             ]);
         }
     }
+
+
+    public function profile() {
+        return view('branch.profile',[
+            'data' => Branch::find(Auth::id()),
+        ]);
+    }
+
+    public function profileUpdate(Request $request) {
+        Branch::find($request->id)->update([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'email' => $request->email,
+        ]);
+
+        return back()->with('message',"Profile Updated Successfully");
+    }
+
+    public function changePassword() {
+        return view('branch.changePassword');
+    }
+
+    public function passwordUpdate(Request $request){
+        $request->validate([
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required'
+        ]);
+
+        if($request->old_password == $request->password) {
+            return back()->with('samePassword','Your Old Password Can Not Be Your New Password.');
+        }
+        if (Hash::check($request->old_password,Auth::user()->password)) {
+            User::find(Auth::id())->update([
+                'password' => Hash::make($request->password),
+            ]);
+            return back()->with('message','Password Changed Successfully');
+        }
+        else {
+            return back()->with('passwordError','Old Password Does Not Mathch.');
+        }
+  
+    }
 }

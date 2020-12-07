@@ -143,7 +143,10 @@ Route::group(['middleware' => ['auth'],'prefix' => 'restarunt'],function() {
 
 Route::group(['middleware' => ['auth:branch'],'prefix' => 'branch'],function() {
     Route::get('/home',"Branch\DashboardController@index")->name('branch.dashboard');
-    Route::get('/profile',"HomeController@profile")->name('branch.profile');
+    Route::get('/profile',"Branch\DashboardController@profile")->name('branch.profile');
+    Route::post('/profile/update',"Branch\DashboardController@profileUpdate")->name('branch.profile.update');
+    Route::get('/change/password',"Branch\DashboardController@changePassword")->name('branch.change.password');
+    Route::post('/password/update',"Branch\DashboardController@passwordUpdate")->name('branch.password.update');
 
     // PosController Routes
     Route::get('/pos',"Branch\PosController@pos")->name('pos');

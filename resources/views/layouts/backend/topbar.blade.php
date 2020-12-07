@@ -72,10 +72,18 @@
                         @elseif(Auth::user()->user_category == "branch")
                             <a class="dropdown-item" href="{{ route('branch.profile') }}"><i class="bx bx-user-circle"></i>Profile</a>
                         @else
-                            <a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="bx bx-user-circle"></i>Profile</a>
+                            <a class="dropdown-item" href="#"><i class="bx bx-user-circle"></i>Profile</a>
+                        @endif
+
+                        @if (Auth::user()->user_category == "restarunt")
+                        <a class="dropdown-item" href="{{ route('change.password') }}"><i class="bx bx-slider-alt"></i> Change Password</a>
+                        @elseif(Auth::user()->user_category == "branch")
+                        <a class="dropdown-item" href="{{ route('branch.change.password') }}"><i class="bx bx-slider-alt"></i> Change Password</a>
+                        @else
+                        <a class="dropdown-item" href="#"><i class="bx bx-slider-alt"></i> Change Password</a>
                         @endif
                         
-                        <a class="dropdown-item" href="{{ route('change.password') }}"><i class="bx bx-slider-alt"></i> Change Password</a>
+                        
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();" ><i class="bx bx-log-out"></i> Sign Out</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

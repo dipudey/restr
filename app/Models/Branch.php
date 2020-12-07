@@ -34,4 +34,12 @@ class Branch extends Authenticatable
     public function user() {
         return $this->belongsTo('App\User','user_id');
     }
+
+    public function totalFood() {
+        return $this->hasMany(BranchFood::class,'branch_id');
+    }
+
+    public function totalWaiter() {
+        return $this->hasMany(Waiter::class,'branch_id');
+    }
 }
