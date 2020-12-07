@@ -1,4 +1,4 @@
-@extends('layouts.restaurant_master')
+@extends('layouts.branch_master')
 
 @section('content')
 <div class="breadcrumb-header justify-content-between"></div>
@@ -31,9 +31,9 @@
                                     <td>{{ $product->selling_price }}</td>
                                     <td>
                                         @php
-                                            $out = \App\Models\StockOut::where('product_id',$product->id)->sum('quantity');
+                                            $out = \App\Models\StockOut::where('branch_id',Auth::id())->where('product_id',$product->id)->sum('quantity');
                                         @endphp
-                                        {{ $product->purchaseProduct->sum('product_quantity') - $out  }} &nbsp;{{ $product->product_attribute }} 
+                                        {{ $product->branchPurchaseProduct->sum('product_quantity') - $out  }} &nbsp;{{ $product->product_attribute }} 
                                     </td>
                                 </tr>
                             @endforeach

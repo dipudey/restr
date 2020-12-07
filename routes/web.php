@@ -144,7 +144,7 @@ Route::group(['middleware' => ['auth'],'prefix' => 'restarunt'],function() {
 Route::group(['middleware' => ['auth:branch'],'prefix' => 'branch'],function() {
     Route::get('/home',"Branch\DashboardController@index")->name('branch.dashboard');
     Route::get('/profile',"HomeController@profile")->name('branch.profile');
-    
+
     // PosController Routes
     Route::get('/pos',"Branch\PosController@pos")->name('pos');
     Route::post('/food/category',"Branch\PosController@foodCategory");
@@ -173,5 +173,27 @@ Route::group(['middleware' => ['auth:branch'],'prefix' => 'branch'],function() {
     Route::get('/customer/edit/{id}',"Branch\CustomerController@edit")->name('customer.edit');
     Route::post('/customer/update','Branch\CustomerController@update')->name('customer.update');
     Route::get('/customer/destroy/{id}',"Branch\CustomerController@destroy")->name('customer.destroy');
+
+    // SupplierController  Routes 
+    Route::get('/supplier',"Branch\SupplierController@index")->name('branch.supplier');
+    Route::post('/supplier/store',"Branch\SupplierController@store")->name('branch.supplier.store');
+    Route::get('/supplier/{id}/edit',"Branch\SupplierController@edit")->name('branch.supplier.edit');
+    Route::post('/supplier/update',"Branch\SupplierController@update")->name('branch.supplier.update');
+    Route::get('/supplier/{id}/destroy',"Branch\SupplierController@destroy")->name('branch.supplier.destroy');
+
+    // PurchaseController  Routes 
+    Route::get('/purchase',"Branch\PurchaseController@index")->name('branch.purchase');
+    Route::get('/purchase-product',"Branch\PurchaseController@create")->name('branch.purchase.create');
+    Route::post('/purchase/store',"Branch\PurchaseController@store")->name('branch.purchase.store');
+    Route::get('/purchase/{id}/edit',"Branch\PurchaseController@edit")->name('branch.purchase.edit');
+    Route::post('/purchase/update',"Branch\PurchaseController@update")->name('branch.purchase.update');
+    Route::get('/purchase/{id}/destroy',"Branch\PurchaseController@destroy")->name('branch.purchase.destroy');
+
+    // StockController Routes 
+    Route::get("/stock","Branch\StockController@stock")->name('branch.stock');
+    Route::get("/stock/out","Branch\StockController@stockOut")->name('stock.out');
+    Route::post("/stock/out","Branch\StockController@out")->name('out.stock');
+    Route::get('/product/json',"Branch\StockController@product");
+    Route::get('/product/{product_id}',"Branch\StockController@productDetails");
 });
 
