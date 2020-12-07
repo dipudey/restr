@@ -145,8 +145,16 @@ Route::group(['middleware' => ['auth:branch'],'prefix' => 'branch'],function() {
     Route::get('/home',"Branch\DashboardController@index")->name('branch.dashboard');
     Route::get('/profile',"HomeController@profile")->name('branch.profile');
     
+    // PosController Routes
     Route::get('/pos',"Branch\PosController@pos")->name('pos');
     Route::post('/food/category',"Branch\PosController@foodCategory");
+    Route::post('/cart',"Branch\PosController@cart");
+    Route::get('/cart/list',"Branch\PosController@cartList");
+    Route::get('/cart/remove/{id}',"Branch\PosController@cartRemove");
+    Route::get('/cart/increment/{id}',"Branch\PosController@increment");
+    Route::get('/cart/decrement/{id}',"Branch\PosController@decrement");
+    Route::post('/sale/food',"Branch\PosController@sale")->name('sale.food');
+    
 
     Route::get('/food/list',"Branch\DashboardController@foodList")->name('branch.food.list');
     Route::post('/food/add',"Branch\DashboardController@branchFoodAdd")->name('branch.food.add');
@@ -158,6 +166,12 @@ Route::group(['middleware' => ['auth:branch'],'prefix' => 'branch'],function() {
     Route::get('/table/edit/{id}',"Restarunt\TableController@edit")->name('table.edit');
     Route::post('/table/update','Restarunt\TableController@update')->name('table.update');
     Route::get('/table/destroy/{id}',"Restarunt\TableController@destroy")->name('table.destroy');
+
+    // TableController Routes 
+    Route::get('/customer',"Branch\CustomerController@index")->name('customer');
+    Route::post('/customer/store','Branch\CustomerController@store')->name('customer.store');
+    Route::get('/customer/edit/{id}',"Branch\CustomerController@edit")->name('customer.edit');
+    Route::post('/customer/update','Branch\CustomerController@update')->name('customer.update');
+    Route::get('/customer/destroy/{id}',"Branch\CustomerController@destroy")->name('customer.destroy');
 });
 
-// Route::get('/profile',"");

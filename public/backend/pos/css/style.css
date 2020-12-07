@@ -21951,7 +21951,7 @@ table.dataTable {
       border-color: #d0d7e8;
       border-radius: 3px; }
       .dataTables_wrapper .dataTables_length .select2-container--default .select2-selection--single .select2-selection__rendered {
-        line-height: 32px; }
+        line-height: 32px; width:464px; }
       .dataTables_wrapper .dataTables_length .select2-container--default .select2-selection--single .select2-selection__arrow {
         height: 30px; }
         .dataTables_wrapper .dataTables_length .select2-container--default .select2-selection--single .select2-selection__arrow b {
@@ -23251,9 +23251,13 @@ input.parsley-error:focus, textarea.parsley-error:focus, input.parsley-success:f
     padding-left: 0.75rem;
     height: 100%;
     display: flex;
+    /* width: 464px; */
     align-items: center; }
   .select2-container--default .select2-selection--single .select2-selection__placeholder {
-    color: #737f9e; }
+    color: #737f9e;width: 432px;
+   }
+
+
   .select2-container--default .select2-selection--single .select2-selection__arrow {
     width: 30px;
     height: 38px;
@@ -26419,7 +26423,7 @@ button.bg-dark:hover, button.bg-dark:focus {
 .bg-gray + .select2-container--default .select2-selection--single {
   background-color: #455473; }
   .bg-gray + .select2-container--default .select2-selection--single .select2-selection__rendered {
-    color: #d0d7e8; }
+    color: #d0d7e8;width: 464px; }
 
 /* ###### 9.1 Background  ###### */
 .bg-transparent {

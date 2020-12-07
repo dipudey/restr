@@ -22,6 +22,8 @@
 <link href="{!! asset('backend/pos') !!}/plugins/sidebar/sidebar.css" rel="stylesheet">
 <!--  Custom Scroll bar-->
 <link href="{!! asset('backend/pos') !!}/plugins/mscrollbar/jquery.mCustomScrollbar.css" rel="stylesheet"/>
+<!-- Internal Select2 css -->
+<link href="{!! asset('backend/pos') !!}/plugins/select2/css/select2.min.css" rel="stylesheet">
 <!--- Style css-->
 <link href="{!! asset('backend/pos') !!}/css/style.css" rel="stylesheet">
 <link href="{!! asset('backend/pos') !!}/css/style-dark.css" rel="stylesheet">
@@ -29,7 +31,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Styles -->
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+{{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 
 
 <!-- Internal Nice-select css  -->
@@ -43,6 +45,7 @@
 <link href="{!! asset('backend/pos') !!}/switcher/demo.css" rel="stylesheet">	
 
 <!-- Footer closed -->				<!-- JQuery min js -->
+{{-- <script src="{!! asset('backend/pos') !!}/plugins/jquery/jquery.min.js"></script> --}}
 <script src="{!! asset('backend/pos') !!}/plugins/jquery/jquery.min.js"></script>
 
 </head>
@@ -126,7 +129,7 @@
 		<div class="main-content horizontal-content">
 			<!-- container opened -->
 			{{-- <div class="container-fluid" id="app"> --}}
-			<div class="container" id="app">
+			<div class="container" id="">
 				<!-- breadcrumb -->
 				{{-- <div class="breadcrumb-header justify-content-between"></div> --}}
 				<!-- breadcrumb -->

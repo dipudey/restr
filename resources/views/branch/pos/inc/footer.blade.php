@@ -11,14 +11,36 @@
 </div>
 
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}" defer></script>
+
+
+
+
+
+<!-- JQuery min js -->
+{{-- <script src="{!! asset('backend/pos') !!}/plugins/jquery/jquery.min.js"></script> --}}
+
 <!-- Bootstrap Bundle js -->
 <script src="{!! asset('backend/pos') !!}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Ionicons js -->
 <script src="{!! asset('backend/pos') !!}/plugins/ionicons/ionicons.js"></script>
-<!-- Internal Nice-select js-->
-<script src="{!! asset('backend/pos') !!}/plugins/jquery-nice-select/js/jquery.nice-select.js"></script>
-<script src="{!! asset('backend/pos') !!}/plugins/jquery-nice-select/js/nice-select.js"></script>
+<!--Internal  Datepicker js -->
+<script src="{!! asset('backend/pos') !!}/plugins/jquery-ui/ui/widgets/datepicker.js"></script>
+<!--Internal  jquery.maskedinput js -->
+<script src="{!! asset('backend/pos') !!}/plugins/jquery.maskedinput/jquery.maskedinput.js"></script>
+<!--Internal  spectrum-colorpicker js -->
+<script src="{!! asset('backend/pos') !!}/plugins/spectrum-colorpicker/spectrum.js"></script>
+<!-- Internal Select2.min js -->
+<script src="{!! asset('backend/pos') !!}/plugins/select2/js/select2.min.js"></script>
+<!--Internal Ion.rangeSlider.min js -->
+<script src="{!! asset('backend/pos') !!}/plugins/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
+<!--Internal  jquery-simple-datetimepicker js -->
+<script src="{!! asset('backend/pos') !!}/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js"></script>
+<!-- Ionicons js -->
+<script src="{!! asset('backend/pos') !!}/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.js"></script>
+<!--Internal  pickerjs js -->
+<script src="{!! asset('backend/pos') !!}/plugins/pickerjs/picker.min.js"></script>
+<!-- Internal form-elements js -->
+<script src="{!! asset('backend/pos') !!}/js/form-elements.js"></script>
 <!-- Moment js -->
 <script src="{!! asset('backend/pos') !!}/plugins/moment/moment.js"></script>
 <!--Internal Sparkline js -->
@@ -41,8 +63,14 @@
 <!-- custom js -->
 <script src="{!! asset('backend/pos') !!}/js/custom.js"></script>
 
-<!-- Switcher js -->
+ <!-- Switcher js -->
 <script src="{!! asset('backend/pos') !!}/switcher/js/switcher.js"></script>
+
+
+
+
+
+
 @yield('posscript')
 
 </body>
