@@ -84,4 +84,10 @@ class ResturantController extends Controller
             'packages' => Package::all(),
         ]);
     }
+
+    public function details($id) {
+        return view('admin.restaurant.details',[
+            'restaurant' => User::find($id)
+        ]);
+    } 
 }

@@ -47,7 +47,20 @@ class User extends Authenticatable
         return $this->hasMany("App\Models\Waiter","user_id");
     }
 
+    public function totalChef() {
+        return $this->hasMany("App\Models\Chef","user_id");
+    }
+
     public function foodItem() {
         return $this->hasMany("App\Models\Food","user_id");
     }
+
+    public function payment() {
+        return $this->hasMany("App\Models\Payment","user_id");
+    }
+
+    
+
+
+
 }

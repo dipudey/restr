@@ -80,7 +80,7 @@
                         @elseif(Auth::user()->user_category == "branch")
                         <a class="dropdown-item" href="{{ route('branch.change.password') }}"><i class="bx bx-slider-alt"></i> Change Password</a>
                         @else
-                        <a class="dropdown-item" href="#"><i class="bx bx-slider-alt"></i> Change Password</a>
+                        <a class="dropdown-item" href="{{ route('admin.changePassword') }}"><i class="bx bx-slider-alt"></i> Change Password</a>
                         @endif
                         
                         

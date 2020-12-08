@@ -39,7 +39,7 @@
                                     <td>{{ date('d-M-Y',strtotime($restaurant->expaier_date)) }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="" class="btn btn-sm btn-primary"><i class="far fa-eye"></i></a>
+                                            <a href="{{ route('restaurant.details',$restaurant->id) }}" class="btn btn-sm btn-primary"><i class="far fa-eye"></i></a>
                                             <a href="{{ route('restaurant.edit',$restaurant->id) }}" class="btn btn-sm btn-success"><i class="typcn typcn-edit"></i></a>
                                             <a href="{{ route('restaurant.destroy',$restaurant->id) }}" class="btn btn-sm btn-danger" id="delete"><i class="typcn typcn-trash"></i></a>
                                         </div>

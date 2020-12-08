@@ -28,6 +28,8 @@ Route::post('/password/update',"HomeController@passwordUpdate")->name('password.
 //AdminController Routes
 Route::get('/admin/home',"Admin\DashboardController@index")->name('admin.dashboard');
 Route::get('/admin', 'AdminController@showLoginForm')->middleware('adminguest');
+Route::get('/admin/change/password',"Admin\DashboardController@changePassword")->name('admin.changePassword');
+Route::post('/admin/change/password',"Admin\DashboardController@passwordUpdate")->name('admin.password.update');
 Route::post('/admin', 'AdminController@login')->name('admin.login');
 Route::get('/admin/profile',"HomeController@profile")->name('admin.profile');
 
