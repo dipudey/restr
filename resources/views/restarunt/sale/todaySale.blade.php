@@ -30,8 +30,8 @@
                                 <tr>
                                     <td>restro{{ $sale->id }}</td>
                                     <td>{{ $sale->branch->name }}</td>
-                                    <td>{{ $sale->waiter->name }}</td>
-                                    <td>{{ $sale->table->table_name }}</td>
+                                    <td>{{ isset($sale->waiter->name)?$sale->waiter->name:'Pos Sale' }}</td>
+                                    <td>{{ isset($sale->table->table_name)?$sale->table->table_name:'Pos Sale' }}</td>
                                     <td>{{ $sale->orderFoods->sum('total_price') }}</td>
                                     <td>
                                         <a href="{{ route('sale.invoice',$sale->id) }}" target="_blank" class="btn btn-primary btn-sm">Invoice</a>

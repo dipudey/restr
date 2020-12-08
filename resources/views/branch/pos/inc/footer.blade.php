@@ -29,8 +29,9 @@
 <script src="{!! asset('backend/pos') !!}/plugins/jquery.maskedinput/jquery.maskedinput.js"></script>
 <!--Internal  spectrum-colorpicker js -->
 <script src="{!! asset('backend/pos') !!}/plugins/spectrum-colorpicker/spectrum.js"></script>
-<!-- Internal Select2.min js -->
-<script src="{!! asset('backend/pos') !!}/plugins/select2/js/select2.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+ 
 <!--Internal Ion.rangeSlider.min js -->
 <script src="{!! asset('backend/pos') !!}/plugins/ion-rangeslider/js/ion.rangeSlider.min.js"></script>
 <!--Internal  jquery-simple-datetimepicker js -->

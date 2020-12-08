@@ -68,16 +68,24 @@ class DashboardController extends Controller
         $popular_food = [];
         foreach ($food_order as $food) {
             if(BranchFood::where('food_id',$food->food_id)->where('branch_id',$branch_id)->get()) {
+                $data = Food::find($food->food_id);
                 $popular_food[] = [
-                    'food' => new FoodCollection(Food::find($food->food_id)),
-                    'total_sell' => $food->total_sale
+                    'total_sell' => $food->total_sale,
+                    'food_id' => $data->id,
+                    'food_name' => $data->food_name,
+                    'food_category' => $data->category->category_name,
+                    'price' => $data->price,
+                    'discount_percentage' => $data->discount_percentage,
+                    'discount_amount' => $data->discount_amount,
+                    'discount_price' => $data->discount_price,
+                    'picture' => "/uploads/".$data->picture
                 ];
             }
             
         }
 
         return response()->json([
-            'data' => $popular_food
+            'foods' => $popular_food
         ]);
     }
 

@@ -198,5 +198,11 @@ Route::group(['middleware' => ['auth:branch'],'prefix' => 'branch'],function() {
     Route::post("/stock/out","Branch\StockController@out")->name('out.stock');
     Route::get('/product/json',"Branch\StockController@product");
     Route::get('/product/{product_id}',"Branch\StockController@productDetails");
+
+    Route::get('/today/order',"Branch\OrderController@todayOrder")->name('branch.today.order');
+    Route::get('/take/{order_id}/payment',"Branch\OrderController@takePayment")->name('take.payment');
+    Route::post('/take/payment',"Branch\OrderController@takePaymentSubmit")->name('take.payment.submit');
+    Route::get('/sale',"Branch\OrderController@sale")->name('branch.sale');
+    Route::get('/sale/{order_id}/invoice',"Branch\OrderController@invoice")->name('branch.sale.invoice');
 });
 

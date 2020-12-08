@@ -29,7 +29,8 @@
         <link href="{!! asset('backend') !!}/plugins/select2/css/select2.min.css" rel="stylesheet">
         
         <!-- C3 charts css -->
-        
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+
         
         <!--  Right-sidemenu css -->
         <link href="{!! asset('backend') !!}/plugins/sidebar/sidebar.css" rel="stylesheet">
@@ -51,6 +52,69 @@
         <!---Switcher css-->
         <link href="{!! asset('backend') !!}/switcher/css/switcher.css" rel="stylesheet">
         <link href="{!! asset('backend') !!}/switcher/demo.css" rel="stylesheet">	
-</head>
+
+
+
+        <style>
+
+            .select2-container--default .select2-selection--single,
+.select2-selection .select2-selection--single {
+    border: 1px solid #d2d6de;
+    border-radius: 0;
+    padding: 6px 12px;
+    height: 34px
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px
+}
+
+.select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: 28px;
+    user-select: none;
+    -webkit-user-select: none
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    padding-right: 10px
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    padding-left: 0;
+    padding-right: 0;
+    height: auto;
+    margin-top: -3px
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #444;
+    line-height: 28px
+}
+
+.select2-container--default .select2-selection--single,
+.select2-selection .select2-selection--single {
+    border: 1px solid #d2d6de;
+    border-radius: 0 !important;
+    padding: 6px 12px;
+    height: 40px !important
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 26px;
+    position: absolute;
+    top: 6px !important;
+    right: 1px;
+    width: 20px
+}
+
+
+        </style>
+
+    </head>
     <body class="main-body app sidebar-mini">
 	

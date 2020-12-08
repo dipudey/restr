@@ -55,8 +55,25 @@
         <div class="card">
 
             <div class="card-body pb-0">
-                <div class="mb-5">
-                    <h5>Food Items</h5>
+                <div class="mb-3 row">
+                    <div class="col-md-4">
+                        <h5>Food Items</h5>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                <label><b>Customer</b></label> 
+                            </div> 
+                            <div class="col-md-9">
+                                <select id="customer_id" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                    <option value="" selected="selected">selecte customer</option>
+                                    @foreach ($customers as $customer)                            
+                                        <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>
+                                    @endforeach
+                                </select> 
+                            </div>
+                        </div> <!-- /.form-group -->
+                    </div>
                 </div>
                 <div class="table-responsive country-table" style="height: 350px;overflow: scroll;">
                     <table class="table table-striped table-bordered mb-0 text-sm-nowrap text-lg-nowrap text-xl-nowrap">
@@ -97,10 +114,15 @@
                             </button>
                           </div>
                           <div class="col-md-6">
-                            <button type="button" data-toggle="modal" data-target="#cashOnHand" id="show_cash_modal" class="btn btn-success btn-block" title="By Cash &amp; Save [Ctrl+C]">
-                              <i class="fa fa-money" aria-hidden="true"></i>
-                              Cash
-                            </button>
+                                <form action="{{ route('sale.food') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="customer_id" value="" id="setCustomerId">
+                                    <input type="hidden" name="payment_type" value="Cash">
+                                    <button type="submit" id="show_cash_modal" class="btn btn-success btn-block" title="By Cash &amp; Save [Ctrl+C]">
+                                        <i class="fa fa-money" aria-hidden="true"></i>
+                                        Cash
+                                    </button>
+                                </form>
                           </div>
                     </div>
 
@@ -134,16 +156,7 @@
           
             <form action="{{ route('sale.food') }}" method="POST">
                 @csrf
-                <div class="form-group">
-                    <label for=""> Customer </label>
-                    <select name="customer_id" id="" class="form-control" required>
-                        <option value="">select</option>
-                        @foreach ($customers as $customer)                            
-                            <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
+                <input type="hidden" name="customer_id" value="" id="setCustomerIdInPaymentModel">
                 <div class="form-group">
                     <label for="">Payment Type</label>
                     <select name="payment_type" id="" class="form-control" required>
@@ -154,11 +167,6 @@
                         <option value="Card">Card</option>
                     </select>
                 </div>
-                
-                <div class="form-group">
-                    <label for="">Paying Amount</label>
-                    <input type="text" name="paying_amount" class="form-control" required>
-                </div>
 
                 <div class="text-right mt-4">
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -169,59 +177,7 @@
         </div>
       </div>
     </div>
-  </div>
-
-
-  <!-- Multiple Payment Modal -->
-<div class="modal fade" id="cashOnHand" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Cash On Hand</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-
-            <form action="{{ route('sale.food') }}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label for=""> Customer </label>
-                    <select name="customer_id" id="" class="form-control" required>
-                        <option value="">select</option>
-                        @foreach ($customers as $customer)                            
-                            <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
-                <input type="hidden" name="payment_type" value="Cash">
-                
-                <div class="form-group">
-                    <label for="">Paying Amount</label>
-                    <input type="text" name="paying_amount" class="form-control" required>
-                </div>
-
-                <div class="text-right mt-4">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-
-            </form>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-
+</div>
 
 
 
@@ -362,6 +318,14 @@ $(document).ready(function() {
     // alert('kdldk')
 
     
+})
+
+$(document).ready(function() {
+    $('body').on('change',"#customer_id",function() {
+        let customer_id = $(this).val()
+        $("#setCustomerId").val(customer_id)
+        $("#setCustomerIdInPaymentModel").val(customer_id)
+    })
 })
 
 $.ajax({

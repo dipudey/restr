@@ -1,4 +1,4 @@
-@extends('layouts.restaurant_master')
+@extends('layouts.branch_master')
 
 @section('content')
 <div class="breadcrumb-header justify-content-between"></div>
@@ -8,7 +8,7 @@
         <div class="card">
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
-                    <h4 class="card-title mg-b-0"> Today Sale List </h4>
+                    <h4 class="card-title mg-b-0"> Today Order List </h4>
                 </div>
             </div>
             <div class="card-body mt-4">
@@ -34,7 +34,7 @@
                                     <td>{{ isset($sale->table->table_name)?$sale->table->table_name:'Pos Sale' }}</td>
                                     <td>{{ $sale->orderFoods->sum('total_price') }}</td>
                                     <td>
-                                        <a href="{{ route('sale.invoice',$sale->id) }}" target="_blank" class="btn btn-primary btn-sm">Invoice</a>
+                                        <a href="{{ route('take.payment',$sale->id) }}" target="_blank" class="btn btn-primary btn-sm">Take Payment</a>
                                     </td>
                                 </tr>
                             @endforeach

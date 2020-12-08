@@ -7,13 +7,21 @@ use Illuminate\Http\Request;
 use App\Models\Food;
 use App\Models\BranchFood;
 use App\Models\Branch;
+use App\Models\Order;
+use App\Models\OrderPayment;
+use App\Models\Reservation;
 use Carbon\Carbon;
 use Auth;
 
 class DashboardController extends Controller
 {
     public function index() {
-        return view('branch.dashboard');
+        return view('branch.dashboard',[
+            'today_order' => Order::where('branch_id',Auth::id())->where('order_date',date('Y-m-d'))->count(),
+            'today_income' => OrderPayment::where('branch_id',Auth::id())->where('paying_date',date('Y-m-d'))->sum('paying_amount'),
+            'month_income' => OrderPayment::where('branch_id',Auth::id())->whereMonth('paying_date',date('m'))->sum('paying_amount'),
+            'today_reservation' => Reservation::where('reservation_date',date('Y-m-d'))->where('branch_id',Auth::id())->get(),
+        ]);
     }
 
     public function pos() {

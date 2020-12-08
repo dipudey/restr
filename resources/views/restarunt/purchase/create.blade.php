@@ -21,8 +21,8 @@
                         </div>
                        <div class="col-md-6">
                             <label for=""> Product <span class="text-danger">*</span></label>
-                            <select name="product_id" id="" class="form-control" required>
-                                <option value="">select</option>
+                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" required>
+                                <option selected="selected">select product</option>
                                 @foreach ($products as $product)
                                     <option value="{{ $product->id }}">{{ $product->product_name }} >>> {{ $product->product_attribute }}</option>
                                 @endforeach
@@ -42,8 +42,8 @@
                         </div>
                         <div class="col-md-6">
                             <label for=""> Supplier <span class="text-danger">*</span></label>
-                            <select name="supplier_id" id="" class="form-control" required>
-                                <option value="">select</option>
+                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" required>
+                                <option value="" selected="selected">select product</option>
                                 @foreach ($suppliers as $supplier)
                                     <option value="{{ $supplier->id }}">{{ $supplier->contact_person }} ({{ $supplier->contact_number }})</option>
                                 @endforeach

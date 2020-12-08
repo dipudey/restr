@@ -22,8 +22,6 @@
 <link href="{!! asset('backend/pos') !!}/plugins/sidebar/sidebar.css" rel="stylesheet">
 <!--  Custom Scroll bar-->
 <link href="{!! asset('backend/pos') !!}/plugins/mscrollbar/jquery.mCustomScrollbar.css" rel="stylesheet"/>
-<!-- Internal Select2 css -->
-<link href="{!! asset('backend/pos') !!}/plugins/select2/css/select2.min.css" rel="stylesheet">
 <!--- Style css-->
 <link href="{!! asset('backend/pos') !!}/css/style.css" rel="stylesheet">
 <link href="{!! asset('backend/pos') !!}/css/style-dark.css" rel="stylesheet">
@@ -33,9 +31,13 @@
 <!-- Styles -->
 {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> --}}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+
 
 <!-- Internal Nice-select css  -->
-<link href="{!! asset('backend/pos') !!}/plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet"/>
+{{-- <link href="{!! asset('backend/pos') !!}/plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet"/> --}}
 <!---Skinmodes css-->
 <link href="{!! asset('backend/pos') !!}/css/skin-modes.css" rel="stylesheet" />
 <!--- Animations css-->

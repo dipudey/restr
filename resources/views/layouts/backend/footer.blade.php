@@ -14,6 +14,8 @@
     <script src="{!! asset('backend') !!}/plugins/ionicons/ionicons.js"></script>
     <!-- Moment js -->
     <script src="{!! asset('backend') !!}/plugins/moment/moment.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
     <!-- Rating js-->
     <script src="{!! asset('backend') !!}/plugins/rating/jquery.rating-stars.js"></script>
@@ -126,8 +128,16 @@
                 }
             });
             });
-    </script>
 
+
+            $(document).ready(function() {
+                $('.select2').select2({
+                    closeOnSelect: false
+                });
+            });
+    </script>
+<!--Internal  jquery-simple-datetimepicker js -->
+<script src="{!! asset('backend') !!}/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js"></script>
     @yield('script')
 
 </body>

@@ -158,6 +158,7 @@ class PosController extends Controller
     }
 
     public function sale(Request $request) {
+
         $branch_info = Branch::find(Auth::id());
         $cart = Cart::where('branch_id',Auth::id())->get();
         // Order Added
@@ -189,7 +190,7 @@ class PosController extends Controller
             'branch_id' => Auth::id(),
             'order_id' => $order_id,
             'payment_type' => $request->payment_type,
-            'paying_amount' => $request->paying_amount,
+            'paying_amount' => $cart->sum('total_price'),
             'paying_date' => date('Y-m-d'),
             'created_at' => Carbon::now()
         ]);
