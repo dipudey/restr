@@ -1,66 +1,106 @@
-@include('layouts.backend.header')
+<!doctype html>
+<html class="no-js" lang="">
 
-		<!-- Page -->
-		<div class="page">
-			<div class="container-fluid">
-				<div class="row no-gutter">
-					<!-- The image half -->
-					<div class="col-md-6 col-lg-6 col-xl-7 d-none d-md-flex bg-primary-transparent">
-						<div class="row wd-100p mx-auto text-center">
-							<div class="col-md-12 col-lg-12 col-xl-12 my-auto mx-auto wd-100p">
-								<img src="/backend/img/media/login.png" class="my-auto ht-xl-80p wd-md-100p wd-xl-80p mx-auto" alt="logo">
-							</div>
+
+<!-- Mirrored from affixtheme.com/html/xmee/demo/login-11.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Dec 2020 11:19:13 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Restro | Login</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{!! asset('loginasset') !!}/css/bootstrap.min.css">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="{!! asset('loginasset') !!}/css/fontawesome-all.min.css">
+    <!-- Flaticon CSS -->
+    <link rel="stylesheet" href="{!! asset('loginasset') !!}/font/flaticon.css">
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{!! asset('loginasset') !!}/style.css">
+</head>
+
+<body>
+   
+    <section class="fxt-template-animation fxt-template-layout11">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-xl-6 col-lg-7 col-sm-12 col-12 fxt-bg-color">
+                    <div class="fxt-content">
+                        <div class="fxt-header">
+                            <a href="/" class="fxt-logo"><img src="/backend/img/brand/logo.png" style="height: 70px !important" alt="Logo"></a>                        
+                            <p>Login into your pages account</p>
 						</div>
-					</div>
-					<!-- The content half -->
-					<div class="col-md-6 col-lg-6 col-xl-5">
-						<div class="login d-flex align-items-center py-2">
-							<!-- Demo content-->
-							<div class="container p-0">
-								<div class="row">
-									<div class="col-md-10 col-lg-10 col-xl-9 mx-auto">
-										<div class="card-sigin">
-											<div class="mb-5 d-flex"> <a href=""><img src="/backend/img/brand/favicon.png" class="sign-favicon ht-40" alt="logo"></a><h1 class="main-logo1 ml-1 mr-0 my-auto tx-28">Res<span>tr</span>o</h1></div>
-											<div class="card-sigin">
-											<div class="card-sigin">
-												<div class="main-signup-header">
-													<h2>Welcome To Restro!</h2>
-													<h5 class="font-weight-semibold mb-4">Please sign in to continue.</h5>
-                                                    <form action="{{ route('admin.login') }}" method="POST">
-                                                        @csrf
-														<div class="form-group">
-															<label>Email</label> <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                                            @error('email')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-														<div class="form-group">
-															<label>Password</label> <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                                                            @error('password')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                        </div>
-                                                        <button class="btn btn-main-primary btn-block">Sign In</button>
-														<div class="row row-xs">
-
-														</div>
-													</form>
+						<div class="text-center">
+						
+							<div class="fxt-form"> 
+								<form action="{{ route('admin.login') }}" method="POST">
+									@csrf
+									<div class="form-group"> 
+										<div class="fxt-transformY-50 fxt-transition-delay-1">                                              
+											<input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="Email" required="required">
+										</div>
+										@error('email')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
+									</div>
+									<div class="form-group">  
+										<div class="fxt-transformY-50 fxt-transition-delay-2">                                              
+											<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="********" required="required" autocomplete="current-password">
+											<i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
+										</div>
+										@error('password')
+											<span class="invalid-feedback" role="alert">
+												<strong>{{ $message }}</strong>
+											</span>
+										@enderror
+									</div>
+									<div class="form-group">
+										<div class="fxt-transformY-50 fxt-transition-delay-3">  
+											<div class="fxt-checkbox-area">
+												<div class="checkbox">
+													<input id="checkbox1" type="checkbox">
+													<label for="checkbox1">Keep me logged in</label>
 												</div>
+												{{-- <a href="forgot-password-11.html" class="switcher-text">Forgot Password</a> --}}
 											</div>
 										</div>
 									</div>
-								</div>
-							</div><!-- End -->
-						</div>
-					</div><!-- End -->
-				</div>
-			</div>
-		</div>
-		<!-- End Page -->
+									<div class="form-group">
+										<div class="fxt-transformY-50 fxt-transition-delay-4">  
+											<button type="submit" class="fxt-btn-fill">Log in</button>
+										</div>
+									</div>
+								</form>                
+							</div> 
 
-@include('layouts.backend.footer')
+						
+						</div>                            
+                        
+                        
+                    </div>
+                </div>                    
+            </div>
+        </div>
+    </section>    
+    <!-- jquery-->
+    <script src="{!! asset('loginasset') !!}/js/jquery-3.5.0.min.js"></script>
+    <!-- Popper js -->
+    <script src="{!! asset('loginasset') !!}/js/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="{!! asset('loginasset') !!}/js/bootstrap.min.js"></script>
+    <!-- Imagesloaded js -->
+    <script src="{!! asset('loginasset') !!}/js/imagesloaded.pkgd.min.js"></script>
+    <!-- Validator js -->
+    <script src="{!! asset('loginasset') !!}/js/validator.min.js"></script>
+    <!-- Custom Js -->
+    <script src="{!! asset('loginasset') !!}/js/main.js"></script>
 
+</body>
+
+</html>

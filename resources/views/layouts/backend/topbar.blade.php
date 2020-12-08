@@ -71,8 +71,8 @@
                             <a class="dropdown-item" href="{{ route('restarunt.profile') }}"><i class="bx bx-user-circle"></i>Profile</a>
                         @elseif(Auth::user()->user_category == "branch")
                             <a class="dropdown-item" href="{{ route('branch.profile') }}"><i class="bx bx-user-circle"></i>Profile</a>
-                        @else
-                            <a class="dropdown-item" href="#"><i class="bx bx-user-circle"></i>Profile</a>
+                        {{-- @else
+                            <a class="dropdown-item" href="#"><i class="bx bx-user-circle"></i>Profile</a> --}}
                         @endif
 
                         @if (Auth::user()->user_category == "restarunt")
